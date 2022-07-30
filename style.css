@@ -1,14 +1,21 @@
 body {
+    display: flex;
     background-color: #F3E3CA;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     margin: 2%;
+    border-radius: 30px;
 }
 
 .top-menu-bar {
     flex: 1;
-    height: 150px;
+    display: flex;
+    flex-direction: row;
     background-color: #648C87;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 150px;
+    border-radius: inherit;
 }
 
 .circle {
@@ -16,49 +23,52 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    float: left;
-    margin: calc(150px / 2 - (80px/2)); /*aligns the circle to the centre*/ 
 }
 
 .rectangle {
-    width: 40%;
+    width: 90%;
     height: 50px;
     background-color: #3A651F;
-    position: absolute;
-    left: 120px;
-    top: 80px;
+    position: relative;
+    left: calc(-80px/2); /*width of circle/2 -> radius of circle + margin of env-sus-bar*/
 }
 
 .env-sus-bar {
-    width: calc(40% + 120px);
+    display: flex;
+    width: 40%;
     height: inherit;
-    flex-direction: column;
-    float: left
+    flex-direction: row;
+    float: left;
+    align-items: center; 
 }
 
 .btn {
     height: inherit;
     float: left;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
 .fa-solid {
-    margin: 30px;
     font-size: 80px;
     color: #F3E3CA;
 }
 
 .username {
-
+    display: flex;
+    font-size: 30px;
 }
 
 .account {
-
+    float: left;
 }
 
 .main-menu {
     flex: 2;
     height: 550px;
     padding-top: 50px;
+    border-radius: inherit;
 }
 
 .city-layout {
@@ -66,6 +76,7 @@ body {
     width: 70%;
     height: inherit;
     float: left;
+    border-radius: inherit;
 }
 
 .console {
@@ -73,4 +84,5 @@ body {
     width: 25%;
     height: inherit;
     float: right;
+    border-radius: inherit;
 }
