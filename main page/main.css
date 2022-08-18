@@ -1,3 +1,5 @@
+/*main page*/
+
 body {
     display: flex;
     background-color: #F3E3CA;
@@ -14,23 +16,24 @@ body {
     background-color: #648C87;
     align-items: center;
     justify-content: space-evenly;
-    height: 150px;
+    height: 120px;
     border-radius: inherit;
 }
 
 .circle {
     background-color: #3A651F;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 
 .rectangle {
     width: 90%;
-    height: 50px;
+    height: 40px;
     background-color: #3A651F;
     position: relative;
-    left: calc(-80px/2); /*width of circle/2 -> radius of circle + margin of env-sus-bar*/
+    left: calc(-70px/2); /*width of circle/2 -> radius of circle + margin of env-sus-bar*/
+    border-radius: 10px;
 }
 
 .env-sus-bar {
@@ -51,7 +54,7 @@ body {
 }
 
 .fa-solid {
-    font-size: 80px;
+    font-size: 70px;
     color: #F3E3CA;
 }
 
@@ -66,7 +69,7 @@ body {
 
 .main-menu {
     flex: 2;
-    height: 550px;
+    height: 650px;
     padding-top: 50px;
     border-radius: inherit;
 }
@@ -77,6 +80,7 @@ body {
     height: inherit;
     float: left;
     border-radius: inherit;
+    display: flex;    
 }
 
 .console {
@@ -85,4 +89,13 @@ body {
     height: inherit;
     float: right;
     border-radius: inherit;
+}
+
+/*playfield grid*/
+.city-layout div {
+    height: 258px;
+    width: 258px;
+    background: #18382C;
+    flex-wrap: wrap;
+    border: 1px solid white;
 }

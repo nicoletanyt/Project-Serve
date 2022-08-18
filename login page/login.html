@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <!--<form>
+      <label for="username">Username</label>
+      <br />
+      <input
+        type="text"
+        id="username"
+        class="text-field"
+        placeholder="Enter your username"
+        autofocus
+      />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="text-field"
+        placeholder="Enter your password"
+      />
+      <br />
+    </form>-->
+    <div class="center">
+      <h1>Login</h1>
+      <!--method="post"-->
+      <form action="http://127.0.0.1:5500/main%20page/main.html">
+        <div class="txt_field">
+          <input type="text" id="username" value="" required />
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" id="password" value="" required />
+          <span></span>
+          <label>Password</label>
+        </div>
+        <input type="submit" value="Login" id="login" />
+        <div class="signup_link">
+          New to this game?
+          <a href="http://localhost:5500/sign%20up%20page/signup.html"
+            >Signup</a
+          >
+        </div>
+      </form>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>
