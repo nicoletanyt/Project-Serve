@@ -2,11 +2,12 @@
 
 body {
     display: flex;
-    background-color: #F3E3CA;
+    /*background-color: #F3E3CA;*/
     flex-direction: column;
     justify-content: space-around;
     margin: 2%;
     border-radius: 30px;
+    background: linear-gradient(120deg,#18382C,#F3E3CA);
 }
 
 .top-menu-bar {
@@ -79,8 +80,9 @@ body {
     width: 70%;
     height: inherit;
     float: left;
-    border-radius: inherit;
-    display: flex;    
+    /*border-radius: inherit;*/
+    display: flex; 
+    flex-wrap: wrap;   
 }
 
 .console {
@@ -91,11 +93,16 @@ body {
     border-radius: inherit;
 }
 
-/*playfield grid*/
+/*playfield grid. note: the height & width r hardcoded to make sure it looks nice lmao*/
 .city-layout div {
-    height: 258px;
-    width: 258px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #18382C;
-    flex-wrap: wrap;
+
+    height: 300px;
+    width: 334px;
+    padding: 1%;
     border: 1px solid white;
+    /*border-radius: 5px;*/
 }
