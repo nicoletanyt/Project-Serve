@@ -1,49 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Project Serve App</title>
-    <link rel="stylesheet" href="main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script src="index.js"></script>
-    <script
-      src="https://kit.fontawesome.com/056eae0c7b.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <!--top menu bar-->
-    <div class="top-menu-bar">
-      <!--env sus bar-->
-      <div class="env-sus-bar">
-        <div class="circle"></div>
-        <div class="rectangle"></div>
-      </div>
 
-      <div class="shop btn">
-        <i class="fa-solid fa-shop"></i>
-      </div>
-      <!--shop-->
-      <div class="setting btn">
-        <i class="fa-solid fa-gear"></i>
-      </div>
-      <!--setting-->
-      <div class="username">Hello <span></span></div>
-      <!--username-->
-      <div class="account">
-        <i class="fa-solid fa-user"></i>
-      </div>
-      <!--account-->
+<head>
+  <meta charset="UTF-8" />
+  <title>Project Serve App</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/056eae0c7b.js" crossorigin="anonymous"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD2ROLBJ778QE5gm0q9iDC9t4Vki95ahy0",
+      authDomain: "project-serve-220a8.firebaseapp.com",
+      databaseURL:
+        "https://project-serve-220a8-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "project-serve-220a8",
+      storageBucket: "project-serve-220a8.appspot.com",
+      messagingSenderId: "525776138607",
+      appId: "1:525776138607:web:2875100ce52f89202cf89a",
+    };
+    firebase.initializeApp(firebaseConfig)
+  </script>
+</head>
+
+<body>
+  <!--top menu bar-->
+  <div class="top-menu-bar">
+    <!--env sus bar-->
+    <div class="env-sus-bar">
+      <div class="circle"></div>
+      <div class="rectangle"></div>
     </div>
-    <div class="main-menu">
-      <div class="city-layout"></div>
-      <!--city-->
-      <div class="console"></div>
-      <!--console aka 'gods phone'-->
+
+    <button class="fa-solid fa-shop" onclick="location.href='http://localhost:5500/shop%20page/shop.html'"
+      class="shop btn">
+    </button>
+    <!--shop-->
+    <div class="setting btn">
+      <i class="fa-solid fa-gear"></i>
     </div>
-  </body>
-  <script src="main.js"></script>
+    <!--setting-->
+    <div class="username">Hello <span></span></div>
+    <!--username-->
+    <div class="account">
+      <i class="fa-solid fa-user"></i>
+    </div>
+    <!--account-->
+  </div>
+  <div class="main-menu">
+    <div class="city-layout">
+      <img src="/wallpapers/BASE-0.png" id="city-image" />
+    </div>
+    <!--city-->
+    <!--console aka 'gods phone'-->
+    <div class="mainCont">
+      <h2>God's console</h2>
+      <!-- <h3> Hello , im gods console. The world is dying! </h3> -->
+      <div class="terminalCont">
+        <div class="terminalResultWrapper">
+          <div id="terminalResultsCont"></div>
+        </div>
+        <div id="inputCont">
+          <input id="terminalTextInput" type="text" placeholder="Try /help" autocomplete="off">
+          <div>
+            <button class="fa-regular fa-paper-plane" id="sendBtn"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="main.js"></script>
+
 </html>
