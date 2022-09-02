@@ -29,31 +29,6 @@ function startFirebase() {
   });
 }
 
-//displaying the graphics
-const cityImage = document.querySelector("#city-image");
-const canvas = document.createElement("canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = cityImage.width;
-canvas.height = cityImage.height;
-
-ctx.drawImage(cityImage, 0, 0);
-
-const rgba = ctx.getImageData(0, 0, cityImage.width, cityImage.height).data;
-console.log(rgba);
-
-//image pixel
-for (let i = 0; i < 460; i++) {
-  let colSquare = document.createElement("div");
-  grid.appendChild(colSquare);
-  colSquare.classList.add("gridSquare");
-  for (let i = 0; i < 360; i++) {
-    let rowSquare = document.createElement("div");
-    colSquare.appendChild(rowSquare);
-    rowSquare.classList.add("gridSquare");
-  }
-}
-
 //questions stuff
 class Question {
   constructor(question, option1, option2, option3, option4, correctanswer) {
@@ -105,8 +80,10 @@ const terminalTextInput = document.querySelector("#terminalTextInput");
 const terminalResultWrapper = document.querySelector(".terminalResultWrapper");
 const sendBtn = document.querySelector("#sendBtn");
 let terminalInput;
-let randomQn = Math.floor(Math.random()) * arrayOfQuestions.length;
+let randomQn = Math.floor(Math.random() * arrayOfQuestions.length);
 let option; //for displaying the options for the qn
+
+let level; //Note: FIREBASE STORAGE LATER
 
 class Command {
   constructor(commandName, action) {
@@ -126,6 +103,7 @@ const arrayOfCommands = [
   new Command("/4", "Toggle Option 4"),
 
   //Developing areas
+  new Command("/develop /road", "Develop road developments"),
   new Command("/develop /factory", "Develop the grid for the factory"),
   new Command("/develop /offices", "Develop the grid for the offices"),
   new Command("/develop /watersource", "Develop the grid for the water source"),
@@ -154,8 +132,8 @@ function sendInput() {
       let lineBreak = document.createElement("br");
 
       //display question
-      text.textContent = `Question: ${arrayOfQuestions[2].question}`;
-      console.log(arrayOfQuestions[2].question);
+      text.textContent = `Question: ${arrayOfQuestions[1].question}`;
+      console.log(arrayOfQuestions[1].question);
       text.append(lineBreak);
       terminalResultsCont.append(text);
 
@@ -199,8 +177,9 @@ function sendInput() {
         //nothing happens if they get it wrong
       }
       break;
+    case "/develop /road":
+      break;
     case "/develop /factory":
-      // cityImage.src = "test.png";
       break;
     case "/develop /park":
       break;

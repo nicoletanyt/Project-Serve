@@ -11,13 +11,14 @@ body {
   background-repeat: no-repeat;
 }
 
-.gridSquare {
-  /* border: #000000 1px solid; */
-  height: 8px;
-  width: 8px;
+#canvas {
+  z-index: 1;
+  position: absolute;
 }
 
-.city-image {
+#city-image {
+  z-index: 2;
+  position: absolute;
 }
 
 .top-menu-bar {
@@ -27,20 +28,20 @@ body {
   background-color: #648c87;
   align-items: center;
   justify-content: space-evenly;
-  height: 120px;
+  height: 100px;
   border-radius: inherit;
 }
 
 .circle {
   background-color: #3a651f;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
 .rectangle {
   width: 90%;
-  height: 40px;
+  height: 30px;
   background-color: #3a651f;
   position: relative;
   left: calc(-70px / 2);
@@ -68,7 +69,7 @@ body {
 }
 
 .fa-solid {
-  font-size: 70px;
+  font-size: 50px;
   color: #000000;
   background-color: transparent;
   border-color: transparent;
@@ -87,22 +88,20 @@ body {
 .main-menu {
   flex: 2;
   height: 650px;
-  padding-top: 50px;
+  padding-top: 10px;
   border-radius: inherit;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
 }
 
 .city-layout {
   background-color: #d9d9d9;
-  width: max-content;
-  height: inherit;
   float: left;
   /*border-radius: inherit;*/
   display: flex;
   flex-wrap: wrap;
-  margin-right: 2%;
-  background-image: url(/BASE-0.png);
+  margin-right: 4%;
   height: 720px;
   width: 920px;
 }
@@ -118,7 +117,7 @@ body {
   transition: 0.5s;
 }
 
-.center {
+/* .center {
   position: absolute;
   top: 51.8%;
   left: 86%;
@@ -130,7 +129,7 @@ body {
   width: 25%;
   height: inherit;
   float: right;
-}
+} */
 
 html {
   box-sizing: border-box;
@@ -148,24 +147,24 @@ body {
 
 .mainCont {
   width: 30%;
-  margin: 0 auto;
+  margin: 0;
   background-color: black;
   color: green;
   display: flex;
   flex-direction: column;
+  float: right;
 }
 .mainCont h2 {
   display: inline-block;
   text-align: center;
-  margin: 30px;
+  margin: 20px;
   margin-bottom: 0;
   opacity: 1;
   animation: fadeAnimation 1s ease-in-out 0s forwards;
   height: 5%;
 }
 .terminalCont {
-  height: inherit;
-  /* calc(95%) */
+  height: 100%;
   background: black;
   width: 100%;
   padding: 30px;
@@ -188,7 +187,7 @@ body {
 #terminalTextInput {
   background: inherit;
   display: block;
-  border: none;
+  border-color: rgb(194, 194, 194);
   width: 100%;
   color: green;
   font-size: 20px;
@@ -209,7 +208,7 @@ body {
 }
 .terminalResultWrapper {
   overflow-y: auto;
-  height: 500px;
+  /* height: 10%; */
 }
 .pass {
   margin: -5px 0 20px 5px;
@@ -217,6 +216,11 @@ body {
 }
 .pass:hover {
   text-decoration: underline;
+}
+
+#city-image {
+  width: inherit;
+  height: inherit;
 }
 
 /* the animation part from some tutorial*/
@@ -284,24 +288,3 @@ body {
     opacity: 0;
   }
 }
-/* @media screen and (max-width: 1000px) {
-  .gradientCont {
-    height: 220px;
-  }
-  .mainCont {
-    width: 100%;
-    padding: © 12px;
-  }
-  .mainCont h2 {
-    font-size: 32px;
-    margin: 40px 0 0 0;
-  }
-  .mainCont h3 {
-    font-size: 16px;
-    margin: 0 0 40px 0;
-  }
-
-  #terminalResultCont {
-    height: 100px;
-  }
-} */
