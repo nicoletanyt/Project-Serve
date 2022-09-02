@@ -1,4 +1,4 @@
-const grid = document.querySelector(".city-layout"); //grid of squares, aka the playfield
+const cityLayout = document.querySelector(".city-layout"); //grid of squares, aka the playfield
 const usernameTag = document.querySelector(".username");
 
 let username = localStorage.getItem("username");
@@ -74,16 +74,21 @@ const arrayOfQuestions = [
 
 startFirebase();
 
+//level indicator
+const levelIndicator = document.querySelector(".circle");
+const levelProgressBar = document.querySelector(".level-progress");
+let level = 1; //Note: FIREBASE STORAGE LATER
+let levelProgress = 0;
+levelIndicator.textContent = level;
+levelProgressBar.style.width = levelProgress + "%";
+
 //terminal
 const terminalResultsCont = document.querySelector("#terminalResultsCont");
 const terminalTextInput = document.querySelector("#terminalTextInput");
 const terminalResultWrapper = document.querySelector(".terminalResultWrapper");
 const sendBtn = document.querySelector("#sendBtn");
 let terminalInput;
-let randomQn = Math.floor(Math.random() * arrayOfQuestions.length);
 let option; //for displaying the options for the qn
-
-let level; //Note: FIREBASE STORAGE LATER
 
 class Command {
   constructor(commandName, action) {
@@ -116,7 +121,6 @@ const arrayOfCommands = [
 
 function sendInput() {
   terminalInput = terminalTextInput.value;
-
   switch (terminalInput) {
     case "/help":
       //display all the commands
@@ -130,10 +134,11 @@ function sendInput() {
     case "/question":
       let text = document.createElement("p");
       let lineBreak = document.createElement("br");
-
+      window.randomQn = Math.floor(Math.random() * arrayOfQuestions.length);
       //display question
-      text.textContent = `Question: ${arrayOfQuestions[1].question}`;
-      console.log(arrayOfQuestions[1].question);
+      text.textContent = `Question: ${
+        arrayOfQuestions[window.randomQn].question
+      }`;
       text.append(lineBreak);
       terminalResultsCont.append(text);
 
@@ -142,16 +147,16 @@ function sendInput() {
         let text = document.createElement("p");
         switch (i) {
           case 1:
-            option = arrayOfQuestions[randomQn].option1;
+            option = arrayOfQuestions[window.randomQn].option1;
             break;
           case 2:
-            option = arrayOfQuestions[randomQn].option2;
+            option = arrayOfQuestions[window.randomQn].option2;
             break;
           case 3:
-            option = arrayOfQuestions[randomQn].option3;
+            option = arrayOfQuestions[window.randomQn].option3;
             break;
           case 4:
-            option = arrayOfQuestions[randomQn].option4;
+            option = arrayOfQuestions[window.randomQn].option4;
             break;
         }
         text.textContent = `Option ${i}: ${option}`;
@@ -159,25 +164,24 @@ function sendInput() {
         terminalResultsCont.append(text);
       }
       break;
-    case "/1" || "/2" || "/3" || "/4":
-      if (`/${arrayOfQuestions[randomQn].correctanswer}` == terminalInput) {
-        //if user input correct answer
-        let text = document.createElement("p");
-        text.textContent = "Correct!";
-        terminalResultsCont.append(text);
-        terminalResultsCont.append(
-          (document.createElement("p").textContent =
-            "Type /develop /[grid] to develop one of the grids.")
-        );
-        //btw
-      } else {
-        let text = document.createElement("p");
-        text.textContent = "Incorrect, try again.";
-        terminalResultsCont.append(text);
-        //nothing happens if they get it wrong
-      }
+    case "/1":
+      checkForCorrectAns(terminalInput, window.randomQn);
+      break;
+    case "/2":
+      checkForCorrectAns(terminalInput, window.randomQn);
+      break;
+    case "/3":
+      checkForCorrectAns(terminalInput, window.randomQn);
+      break;
+    case "/4":
+      checkForCorrectAns(terminalInput, window.randomQn);
       break;
     case "/develop /road":
+      let imageOverlay = document.createElement("img");
+      switch (level) {
+        case 1:
+          imageOverlay.src = "";
+      }
       break;
     case "/develop /factory":
       break;
@@ -201,6 +205,7 @@ function sendInput() {
   terminalResultWrapper.scrollTop =
     terminalResultWrapper.scrollHeight - terminalResultWrapper.clientHeight;
 }
+
 sendBtn.addEventListener("click", sendInput);
 document.addEventListener("keypress", function (e) {
   switch (e.key) {
@@ -208,3 +213,38 @@ document.addEventListener("keypress", function (e) {
       sendInput();
   }
 });
+
+function checkForCorrectAns(terminalInput, randomQn) {
+  if (terminalInput == `/${arrayOfQuestions[randomQn].correctanswer}`) {
+    //if user input correct answer
+    let text = document.createElement("p");
+    text.textContent = "Correct!";
+    terminalResultsCont.append(text);
+    // terminalResultsCont.append(
+    //   (document.createElement("p").textContent =
+    //     "Type /develop /[grid] to develop one of the grids.")
+    // );
+    if (level != 3) {
+      if (levelProgress > 75) {
+        level += 1;
+        levelProgress = 0;
+        let imageOverlay = document.createElement("img");
+        //imageOverlay.src = ""
+        cityLayout.appendChild(imageOverlay);
+        imageOverlay.classList.add("overlay-image");
+      } else {
+        levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25);
+      }
+      levelIndicator.textContent = level;
+    } else {
+      level = 3; //max level
+      levelIndicator.textContent = level;
+    }
+    levelProgressBar.style.width = levelProgress + "%";
+  } else {
+    let text = document.createElement("p");
+    text.textContent = "Incorrect. Try again.";
+    terminalResultsCont.append(text);
+    //nothing happens if they get it wrong
+  }
+}
