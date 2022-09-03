@@ -224,22 +224,32 @@ function checkForCorrectAns(terminalInput, randomQn) {
     //   (document.createElement("p").textContent =
     //     "Type /develop /[grid] to develop one of the grids.")
     // );
-    if (level != 3) {
+    if (level !== 4) {
       if (levelProgress > 75) {
         level += 1;
-        levelProgress = 0;
+        levelProgress = 0; //restart the bar
         let imageOverlay = document.createElement("img");
-        //imageOverlay.src = ""
+        switch (level) {
+          case 2:
+            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 1.png";
+            break;
+          case 3:
+            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 2.png";
+            break;
+          case 4:
+            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 3.png";
+            break;
+        }
         cityLayout.appendChild(imageOverlay);
         imageOverlay.classList.add("overlay-image");
       } else {
-        levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25);
+        levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25); //just for styling purposes so it looks good
       }
-      levelIndicator.textContent = level;
     } else {
-      level = 3; //max level
-      levelIndicator.textContent = level;
+      level = 4; //max level
+      levelProgress = 99; //to show that no longer can level up
     }
+    levelIndicator.textContent = level;
     levelProgressBar.style.width = levelProgress + "%";
   } else {
     let text = document.createElement("p");

@@ -11,16 +11,6 @@ body {
   background-repeat: no-repeat;
 }
 
-#canvas {
-  z-index: 1;
-  position: absolute;
-}
-
-#city-image {
-  z-index: 2;
-  position: absolute;
-}
-
 .top-menu-bar {
   flex: 1;
   display: flex;
@@ -122,6 +112,7 @@ body {
   height: 720px;
   width: 920px;
   image-rendering: pixelated;
+  position: relative;
 }
 
 .txt_field label {
@@ -226,12 +217,16 @@ body {
 #city-image {
   width: inherit;
   height: inherit;
-  position: relative;
+  position: absolute;
+  z-index: 0;
 }
 .overlay-image {
   position: absolute;
   top: 0;
   left: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 1;
 }
 
 /* the animation part from some tutorial*/
