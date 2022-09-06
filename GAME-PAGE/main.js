@@ -82,6 +82,9 @@ let levelProgress = 0;
 levelIndicator.textContent = level;
 levelProgressBar.style.width = levelProgress + "%";
 
+//questions
+// let isQuestionAnswered = false;
+
 //terminal
 const terminalResultsCont = document.querySelector("#terminalResultsCont");
 const terminalTextInput = document.querySelector("#terminalTextInput");
@@ -132,6 +135,7 @@ function sendInput() {
       }
       break;
     case "/question":
+      window.isQuestionAnswered = false;
       let text = document.createElement("p");
       let lineBreak = document.createElement("br");
       window.randomQn = Math.floor(Math.random() * arrayOfQuestions.length);
@@ -165,16 +169,24 @@ function sendInput() {
       }
       break;
     case "/1":
-      checkForCorrectAns(terminalInput, window.randomQn);
+      if (window.isQuestionAnswered == false)
+        checkForCorrectAns(terminalInput, window.randomQn);
+      else dontUnderstand();
       break;
     case "/2":
-      checkForCorrectAns(terminalInput, window.randomQn);
+      if (window.isQuestionAnswered == false)
+        checkForCorrectAns(terminalInput, window.randomQn);
+      else dontUnderstand();
       break;
     case "/3":
-      checkForCorrectAns(terminalInput, window.randomQn);
+      if (window.isQuestionAnswered == false)
+        checkForCorrectAns(terminalInput, window.randomQn);
+      else dontUnderstand();
       break;
     case "/4":
-      checkForCorrectAns(terminalInput, window.randomQn);
+      if (window.isQuestionAnswered == false)
+        checkForCorrectAns(terminalInput, window.randomQn);
+      else dontUnderstand();
       break;
     case "/develop /road":
       let imageOverlay = document.createElement("img");
@@ -196,9 +208,7 @@ function sendInput() {
     case "":
       break;
     default: //it's called notText cuz this is being annoying yes
-      let notText = document.createElement("p");
-      notText.textContent = "Unfortunately, I don't understand you.";
-      terminalResultsCont.append(notText);
+      dontUnderstand();
       break;
   }
   terminalTextInput.value = "";
@@ -214,7 +224,13 @@ document.addEventListener("keypress", function (e) {
   }
 });
 
-function checkForCorrectAns(terminalInput, randomQn) {
+function dontUnderstand() {
+  let notText = document.createElement("p");
+  notText.textContent = "Unfortunately, I don't understand you.";
+  terminalResultsCont.append(notText);
+}
+
+function checkForCorrectAns(terminalInput, randomQn, isQuestionAnswered) {
   if (terminalInput == `/${arrayOfQuestions[randomQn].correctanswer}`) {
     //if user input correct answer
     let text = document.createElement("p");
@@ -253,8 +269,9 @@ function checkForCorrectAns(terminalInput, randomQn) {
     levelProgressBar.style.width = levelProgress + "%";
   } else {
     let text = document.createElement("p");
-    text.textContent = "Incorrect. Try again.";
+    text.textContent = "Incorrect. Try again with another question.";
     terminalResultsCont.append(text);
     //nothing happens if they get it wrong
   }
+  window.isQuestionAnswered = true;
 }
