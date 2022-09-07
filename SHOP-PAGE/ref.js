@@ -1,14 +1,14 @@
-/* get cart total from session on load */
+/*
 updateCartTotal();
 
-/* button event listeners */
+
 document.getElementById("emptycart").addEventListener("click", emptyCart);
 var btns = document.getElementsByClassName('addtocart');
 for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', function() {addToCart(this);});
 }
 
-/* ADD TO CART functions */
+
 
 function addToCart(elem) {
     //init
@@ -35,7 +35,6 @@ function addToCart(elem) {
     };
     //convert product data to JSON for storage
     var stringProduct = JSON.stringify(product);
-    /*send product data to session storage */
     
     if(!sessionStorage.getItem('cart')){
         //append product JSON object to cart array
@@ -60,7 +59,7 @@ function addToCart(elem) {
         updateCartTotal();
     }
 }
-/* Calculate Cart Total */
+
 function updateCartTotal(){
     //init
     var total = 0;
@@ -102,7 +101,7 @@ function addedToCart(pname) {
      alerts.classList.add("message");
   }
 }
-/* User Manually empty cart */
+
 function emptyCart() {
     //remove cart session storage object & refresh cart totals
     if(sessionStorage.getItem('cart')){
@@ -115,4 +114,5 @@ function emptyCart() {
           alerts.classList.remove("message");
       }
     }
-}
+} 
+*/

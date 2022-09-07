@@ -3,8 +3,10 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Singup</title>
+  <title>Sign up</title>
   <link rel="stylesheet" href="signup.css" />
+  <script type=“module” src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js""></script>
+  <script type=“module” src=" https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js""></script>
 </head>
 
 <body>
@@ -12,20 +14,39 @@
     <h1>Sign Up</h1>
     <form action="http://127.0.0.1:5500/GAME-PAGE/main.html">
       <div class="txt_field">
-        <input type="text" id="username" required />
+        <input type="email" id="email" required />
         <span></span>
-        <label>Username</label>
+        <label>Email</label>
       </div>
       <div class="txt_field">
         <input type="password" id="password" required />
         <span></span>
         <label>Password</label>
       </div>
-      <!--<div class="pass">Forgot Password?</div>-->
-      <input type="submit" value="Sign up" id="sign_up" />
+      <button id="submit_btn">Sign up</button>
+      <!-- <input type="submit" value="Sign up" id="submit_btn" /> -->
     </form>
+    <script type="module">
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCoBrFTjRmnNT_pE9xfGAjwLARvK1Fdv-E",
+        authDomain: "sus-city-c7c68.firebaseapp.com",
+        projectId: "sus-city-c7c68",
+        storageBucket: "sus-city-c7c68.appspot.com",
+        messagingSenderId: "37352683292",
+        appId: "1:37352683292:web:8543871455054965c5ecd9"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      let firebaseRef = firebase.database().ref('emails')
+      document.querySelector("#submit_btn").addEventListener("click", () => {
+        const emailValue = document.getElementById("email").value
+        firebaseRef.push(emailValue)
+      })
+    </script>
+    <script src="signup.js"></script>
   </div>
-  <script src="signup.js"></script>
 </body>
 
 </html>

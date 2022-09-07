@@ -4,30 +4,10 @@ const usernameTag = document.querySelector(".username");
 let username = localStorage.getItem("username");
 usernameTag.innerHTML = "Hello " + username + "!";
 let password = localStorage.getItem("password");
-
-//firebase stuff
-function startFirebase() {
-  let playerId;
-  let playerRef;
-
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      //you're logged in
-      playerId = user.uid;
-      playerRef = firebase.database().ref(`players/${playerId}`);
-      playerRef.set({
-        name: username,
-        password: password,
-        level: 3,
-      });
-
-      //remove from firebase when one's disconnected
-      //playerRef.onDisconnect().remove();
-    } else {
-      //you're logged out
-    }
-  });
-}
+let favor = 0;
+let roadLevel = 2;
+let factoryLevel = 2;
+let parkLevel = 2;
 
 //questions stuff
 class Question {
@@ -67,12 +47,112 @@ const arrayOfQuestions = [
     "Reduced air pollution",
     3
   ),
+  new Question(
+    "How many charging points will be available in Singapore by 2030?",
+    "30000",
+    "40000",
+    "50000",
+    "60000",
+    4
+  ),
+  new Question(
+    "What are NOT some efforts put in to encourage the transition to EVs?",
+    "Reduced ERP charges on Electric vehicles from 2030",
+    "Cleaner energy models for all new car and taxi registrations from 2030",
+    "No new diesel car and taxi registrations from 2025",
+    "EEAI (EV Early Adoption Incentive) subsidies",
+    1
+  ),
+  new Question(
+    "Who benefits from LTA's initiative, Green Man + ?",
+    "Regular pedestrians",
+    "Elderly",
+    "Emergency workers",
+    "Young children & Toddlers",
+    2
+  ),
+  new Question(
+    "What are some challenges in Transport planning?",
+    "Land scarcity",
+    "Topography issues",
+    "Traffic conditions",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "How big will Singapore's rail network be by 2030?",
+    "230km",
+    "310km",
+    "360km",
+    "420km",
+    3
+  ),
+  new Question(
+    "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
+    "30min city, 10 min towns",
+    "40min city, 15 min towns",
+    "35min city, 15 min towns",
+    "45min city, 20 min towns",
+    4
+  ),
+  new Question(
+    "What are the benefits of using LEDs?",
+    "No impact on the environment",
+    "Flexible designs",
+    "Low cost up-front",
+    "All of the above",
+    2
+  ),
+  new Question(
+    "LED lights are more power efficient than...",
+    "Fluorescent lamps",
+    "Incandescent bulbs",
+    "Halogen Light Bulbs",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "Conditions that affect solar panel efficiency",
+    "Humidity",
+    "Shade",
+    "Temperature",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "How many households does Singapore plan on powering (per year)by 2030?",
+    "300000",
+    "350000",
+    "400000",
+    "530000",
+    2
+  ),
+  new Question(
+    "Recycling reduces...",
+    "Water pollution",
+    "Energy Usage",
+    "Air pollution",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
+    "70%",
+    "90%",
+    "100%",
+    "150%",
+    1
+  ),
+  new Question(
+    "Green roofs and walls DO NOT help...",
+    "Regulate building internal temperature",
+    "Decrease incidence of lightning strikes",
+    "One's mental health",
+    "Reduce carbon footprint",
+    2
+  ),
   //doing one question then so we need too add more elements we can add without having to add to the other ones and stuff
 ];
-
-//firebase
-
-startFirebase();
 
 //level indicator
 const levelIndicator = document.querySelector(".circle");
@@ -81,9 +161,6 @@ let level = 1; //Note: FIREBASE STORAGE LATER
 let levelProgress = 0;
 levelIndicator.textContent = level;
 levelProgressBar.style.width = levelProgress + "%";
-
-//questions
-// let isQuestionAnswered = false;
 
 //terminal
 const terminalResultsCont = document.querySelector("#terminalResultsCont");
@@ -105,10 +182,10 @@ const arrayOfCommands = [
 
   //Questions
   new Command("/question", "Toggle Questions"),
-  new Command("/1", "Toggle Option 1"),
-  new Command("/2", "Toggle Option 2"),
-  new Command("/3", "Toggle Option 3"),
-  new Command("/4", "Toggle Option 4"),
+  new Command("/1", "Choose Option 1"),
+  new Command("/2", "Choose Option 2"),
+  new Command("/3", "Choose Option 3"),
+  new Command("/4", "Choose Option 4"),
 
   //Developing areas
   new Command("/develop /road", "Develop road developments"),
@@ -127,12 +204,16 @@ function sendInput() {
   switch (terminalInput) {
     case "/help":
       //display all the commands
+      terminalResultsCont.append("-How do I put this in simple terms...-");
       for (let i = 0; i < arrayOfCommands.length; i++) {
         let text = document.createElement("p");
         text.textContent =
           arrayOfCommands[i].commandName + ": " + arrayOfCommands[i].action;
         terminalResultsCont.append(text);
       }
+      terminalResultsCont.append(
+        "-Sound difficult? Don't worry, you'll be fine. Try starting off with /question...-"
+      );
       break;
     case "/question":
       window.isQuestionAnswered = false;
@@ -190,24 +271,129 @@ function sendInput() {
       break;
     case "/develop /road":
       let imageOverlay = document.createElement("img");
-      switch (level) {
-        case 1:
-          imageOverlay.src = "";
+
+      if (favor > 0) {
+        switch (roadLevel) {
+          case 2:
+            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-1.png";
+            terminalResultsCont.append(
+              "-After all you did, they added... bicycles! That's great. Seriously though, bike sharing would help carbon emissions. I mean, its better than cars really.-"
+            );
+            break;
+          case 3:
+            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
+            let dumbText = document.createElement("p");
+            dumbText.textContent =
+              " -Ah nice, race flag banners. Should improve congestio-";
+            terminalResultsCont.append(dumbText);
+            let nerdText = document.createElement("p");
+            nerdText.textContent =
+              " Those are Electronic Road Pricing gantries.  ERP gantries erected at key positions charge motorists for utilising certain roads at times when these roads are more prone to congestion. Those who travel on ERP roads enjoy smoother journeys and reach their destinations in a shorter time. ERP rates are determined based on traffic conditions.";
+            terminalResultsCont.append(nerdText);
+
+            let scoffText = document.createElement("p");
+            scoffText.textContent = " scoffs* -Nerd.-";
+            terminalResultsCont.append(scoffText);
+            break;
+          case 4:
+            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
+            break;
+        }
+        favor = favor - 1;
+        roadLevel += 1;
+        cityLayout.appendChild(imageOverlay);
+        imageOverlay.classList.add("overlay-image");
       }
       break;
     case "/develop /factory":
+      let imageOverlay1 = document.createElement("img");
+
+      if (favor > 0) {
+        switch (factoryLevel) {
+          case 2:
+            imageOverlay1.src = "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-1.png";
+            break;
+          case 3:
+            imageOverlay1.src = "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-2.png";
+            break;
+          case 4:
+            imageOverlay1.src = "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-2.png";
+            break;
+        }
+        favor -= 1;
+        factoryLevel += 1;
+        cityLayout.appendChild(imageOverlay1);
+        imageOverlay1.classList.add("overlay-image");
+      }
       break;
     case "/develop /park":
+      let imageOverlay2 = document.createElement("img");
+      if (favor > 0 && level % 3 == 0) {
+        switch (parkLevel) {
+          case 2:
+            imageOverlay2.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 1.png";
+            break;
+          case 3:
+            imageOverlay2.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 2.png";
+            break;
+          case 4:
+            imageOverlay2.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 3.png";
+            break;
+        }
+        favor -= 1;
+        parkLevel += 1;
+        cityLayout.appendChild(imageOverlay2);
+        imageOverlay2.classList.add("overlay-image");
+      }
       break;
     case "/develop /offices":
+      switch (level) {
+        case 2:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-1.png";
+          break;
+        case 3:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png";
+          break;
+        case 4:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png";
+          break;
+      }
+      cityLayout.appendChild(imageOverlay);
+      imageOverlay.classList.add("overlay-image");
       break;
     case "/develop /watersource":
+      switch (level) {
+        case 2:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-1.png";
+          break;
+        case 3:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-2.png";
+          break;
+        case 4:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-2.png";
+          break;
+      }
+      cityLayout.appendChild(imageOverlay);
+      imageOverlay.classList.add("overlay-image");
       break;
     case "/develop /wasteland":
+      switch (level) {
+        case 2:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-1.png";
+          break;
+        case 3:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-2.png";
+          break;
+        case 4:
+          imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-2.png";
+          break;
+      }
+      cityLayout.appendChild(imageOverlay);
+      imageOverlay.classList.add("overlay-image");
       break;
     case "":
       break;
-    default: //it's called notText cuz this is being annoying yes
+    default:
       dontUnderstand();
       break;
   }
@@ -228,41 +414,41 @@ function dontUnderstand() {
   let notText = document.createElement("p");
   notText.textContent = "Unfortunately, I don't understand you.";
   terminalResultsCont.append(notText);
+  terminalResultsCont.append(
+    "-Ignore her, what we mean is *please use commands that exist.*-"
+  );
 }
 
-function checkForCorrectAns(terminalInput, randomQn, isQuestionAnswered) {
+function levelUp() {
+  let levelText = document.createElement("p");
+  levelText.textContent =
+    "-Hey hey, guess who can now develop a little special something? You! Go on, type /develop /[grid] to develop one of the grids...-";
+  terminalResultsCont.append(levelText);
+}
+
+function checkForCorrectAns(terminalInput, randomQn) {
   if (terminalInput == `/${arrayOfQuestions[randomQn].correctanswer}`) {
     //if user input correct answer
+
     let text = document.createElement("p");
     text.textContent = "Correct!";
+
     terminalResultsCont.append(text);
-    // terminalResultsCont.append(
-    //   (document.createElement("p").textContent =
-    //     "Type /develop /[grid] to develop one of the grids.")
-    // );
-    if (level !== 4) {
+
+    if (level !== 12) {
       if (levelProgress > 75) {
         level += 1;
+        favor += 1;
+        levelUp();
+
         levelProgress = 0; //restart the bar
-        let imageOverlay = document.createElement("img");
-        switch (level) {
-          case 2:
-            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 1.png";
-            break;
-          case 3:
-            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 2.png";
-            break;
-          case 4:
-            imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/PARK-stage 3.png";
-            break;
-        }
-        cityLayout.appendChild(imageOverlay);
-        imageOverlay.classList.add("overlay-image");
+        // levelProgress = 100; //im sick of this
       } else {
-        levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25); //just for styling purposes so it looks good
+        // levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25); //just for styling purposes so it looks good
+        levelProgress == 75 ? (levelProgress += 99) : (levelProgress += 100); //im tired of having to put in questions
       }
     } else {
-      level = 4; //max level
+      level = 12; //max level
       levelProgress = 99; //to show that no longer can level up
     }
     levelIndicator.textContent = level;
@@ -271,6 +457,8 @@ function checkForCorrectAns(terminalInput, randomQn, isQuestionAnswered) {
     let text = document.createElement("p");
     text.textContent = "Incorrect. Try again with another question.";
     terminalResultsCont.append(text);
+    terminalResultsCont.append("-Soz. Don't worry, happens with all... gods.-");
+
     //nothing happens if they get it wrong
   }
   window.isQuestionAnswered = true;
