@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   margin: 2%;
-  border-radius: 30px;
+  border-radius: 3.6540803897685747vh;
   /* background-image: url("/main-background.jpeg"); */
   /* background-size: 460px, 360px, auto; */
   background-repeat: no-repeat;
@@ -24,10 +24,10 @@ body {
 
 .circle {
   background-color: #3a651f;
-  width: 50px;
-  height: 50px;
+  width: 6.090133982947624vh;
+  height: 6.090133982947624vh;
   border-radius: 50%;
-  font-size: 25px;
+  font-size: 3.045066991473812vh;
   color: whitesmoke;
   display: flex;
   justify-content: center; /* align horizontal */
@@ -110,7 +110,7 @@ body {
   flex-wrap: wrap;
   margin-right: 4%;
   height: 80vh;
-  width: 120vh;
+  width: 100vh;
   image-rendering: pixelated;
   position: relative;
 }
@@ -141,31 +141,31 @@ body {
 }
 
 .mainCont {
-  width: 30%;
   margin: 0;
-  height: 700px;
   background-color: black;
   color: green;
   display: flex;
   flex-direction: column;
   float: right;
   height: 80vh;
-  width: 50vh;
+  width: 65vh;
 }
 .mainCont h2 {
   display: inline-block;
   text-align: center;
-  margin: 20px;
-  margin-bottom: 0;
+  margin: 2px;
+  /* margin-bottom: 0; */
   opacity: 1;
   animation: fadeAnimation 1s ease-in-out 0s forwards;
-  height: 5%;
+  height: 10vh;
+  width: auto;
+  font-size: 1vw;
 }
 .terminalCont {
   height: 100%;
   background: black;
-  width: 100%;
-  padding: 30px;
+  width: inherit;
+  padding: 3vh;
   font-family: "Roboto" monospace;
   opacity: 0;
   animation: slideAnimation 1s ease-in-out 1s forwards,
@@ -181,6 +181,7 @@ body {
   padding-bottom: 18px;
   font-family: "Roboto Mono" monospace;
   line-height: 20px;
+  width: inherit;
 }
 #terminalTextInput {
   background: inherit;

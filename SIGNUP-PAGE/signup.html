@@ -5,47 +5,93 @@
   <meta charset="UTF-8" />
   <title>Sign up</title>
   <link rel="stylesheet" href="signup.css" />
-  <script type=“module” src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js""></script>
-  <script type=“module” src=" https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js""></script>
 </head>
 
 <body>
   <div class="center">
     <h1>Sign Up</h1>
-    <form action="http://127.0.0.1:5500/GAME-PAGE/main.html">
-      <div class="txt_field">
-        <input type="email" id="email" required />
-        <span></span>
-        <label>Email</label>
-      </div>
-      <div class="txt_field">
-        <input type="password" id="password" required />
-        <span></span>
-        <label>Password</label>
-      </div>
-      <button id="submit_btn">Sign up</button>
-      <!-- <input type="submit" value="Sign up" id="submit_btn" /> -->
-    </form>
-    <script type="module">
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyCoBrFTjRmnNT_pE9xfGAjwLARvK1Fdv-E",
-        authDomain: "sus-city-c7c68.firebaseapp.com",
-        projectId: "sus-city-c7c68",
-        storageBucket: "sus-city-c7c68.appspot.com",
-        messagingSenderId: "37352683292",
-        appId: "1:37352683292:web:8543871455054965c5ecd9"
-      };
+    <div class="txt_field">
+      <input type="text" id="username" required />
+      <span></span>
+      <label>Type a fun username (changed on every login)</label>
+    </div>
+    <!-- <div class="txt_field">
+      <input type="password" id="password" required />
+      <span></span>
+      <label>Password</label>
+    </div> -->
+    <button id="submit_btn">Sign up</button>
 
+    <script type="module">
+      //Importing the firebase methods 
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+      import {
+        getDatabase,
+        set,
+        ref,
+        push
+      } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+      import { getAuth, signInAnonymously, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+      // Your web app's Firebase configuration 
+      const firebaseConfig = {
+        apiKey: "AIzaSyD5JexZ6OxSuoM4Jc8ufcOduQXvPlOf2eQ",
+        authDomain: "sus-city.firebaseapp.com",
+        databaseURL:
+          "https://sus-city-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "sus-city",
+        storageBucket: "sus-city.appspot.com",
+        messagingSenderId: "437535689858",
+        appId: "1:437535689858:web:488f322361325fb311b89b",
+      };
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-      let firebaseRef = firebase.database().ref('emails')
-      document.querySelector("#submit_btn").addEventListener("click", () => {
-        const emailValue = document.getElementById("email").value
-        firebaseRef.push(emailValue)
-      })
+      const db = getDatabase();
+      const auth = getAuth(app)
+
+      //Get inputs from HTML 
+      const submitBtn = document.querySelector("#submit_btn")
+
+      submitBtn.addEventListener("click", e => {
+        signInAnonymously(auth) //creates account for authentication
+          .then(() => {
+            saveToFirebase()
+            setTimeout(function () { window.location.href = "http://127.0.0.1:5500/GAME-PAGE/main.html" }, 300);
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      });
+
+      function saveToFirebase() {
+        let user = auth.currentUser //gets the information of current user 
+        let userUID = user.uid //gets the UID of the current user 
+
+        //Sets the default user information (starting)
+        let userInformation = {
+          username: document.getElementById("username").value,
+          last_login: Date.now(),
+          level: 1,
+          greenpoints: 0,
+          favor: 0,
+          levelProgress: 0
+        }
+
+        set(ref(db, "players/" + userUID), {
+          username: userInformation.username,
+          last_login: userInformation.last_login,
+          level: userInformation.level,
+          greenpoints: userInformation.greenpoints,
+          favor: userInformation.favor,
+          levelProgress: userInformation.levelProgress
+        });
+        localStorage.setItem("username", userInformation.username)
+        localStorage.setItem("level", userInformation.level)
+        localStorage.setItem("greenpoints", userInformation.greenpoints)
+        localStorage.setItem("favor", userInformation.favor)
+        localStorage.setItem("levelProgress", userInformation.levelProgress)
+      }
+
     </script>
-    <script src="signup.js"></script>
   </div>
 </body>
 

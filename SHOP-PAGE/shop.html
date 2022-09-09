@@ -4,26 +4,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping Cart</title>
-
+  <title>World Pieces</title>
   <!-- Style CSS -->
   <link rel="stylesheet" href="shop.css">
-
 </head>
 
 <body>
-  <header class="intro">
-    <h1>The World's Pieces</h1>
-
-    <div class="action">
-      <a href="http://localhost:5500/GAME-PAGE/main.html" title="Back to game page" class="btn back">Back to game</a>
-    </div>
+  <header class="TopBorder">
+    <h1 class="Title">The World's Pieces</h1>
   </header>
+  <header class="NextBorder">
+    <div class="Return">
+      <a href="http://localhost:5500/GAME-PAGE/main.html" title="/<Back to game page" class="btn back">Back to game</a>
+    </div>
+    <div class="GPoint">Green Points: <span class="GP">0</span></div>
+    <div class="Username">Hello, <span></span></div>
+    <img src="Images/SHOP-pineapple%20man.png"></img>
+  </header>
+  <div class="Container">
+    <div class="Productcont">
+      <!--<img src="Images/SHOP-pineapple%20man.png" alt="Pineapple Man"><img> -->
+      <div class="Info">
+        <div class="Name">Pinapple man</div>
+        <div class="Price">10</div>
+        <button class="Buybtn">Buy</button>
+      </div>
+    </div>
+    <div class="Productcont">
+      <!-- <img src="Images/SHOP-blimp.png" alt="blimp"><img> -->
+      <div class="Info">
+        <div class="Name">Blimp</div>
+        <div class="Price">30</div>
+        <button class="Buybtn">Buy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="shop.js"></script>
+</body>
+
+</html>
 
 
-  <body>
-
-    <!-- <div class="container">
+<!-- <div class="container">
 
       <div id="alerts"></div>
       <div class="productcont">
@@ -76,9 +99,3 @@
         </div>
       </div>
     </div> -->
-  </body>
-
-  <script src="shop.js"></script>
-</body>
-
-</html>
