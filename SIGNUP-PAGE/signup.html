@@ -21,7 +21,6 @@
       <label>Password</label>
     </div> -->
     <button id="submit_btn">Sign up</button>
-
     <script type="module">
       //Importing the firebase methods 
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -29,7 +28,8 @@
         getDatabase,
         set,
         ref,
-        push
+        get,
+        child
       } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
       import { getAuth, signInAnonymously, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
       // Your web app's Firebase configuration 
@@ -55,7 +55,7 @@
         signInAnonymously(auth) //creates account for authentication
           .then(() => {
             saveToFirebase()
-            setTimeout(function () { window.location.href = "http://127.0.0.1:5500/GAME-PAGE/main.html" }, 300);
+            setTimeout(function () { window.location.href = "http://127.0.0.1:5500/GAME-PAGE/main.html" }, 400);
           })
           .catch((error) => {
             console.log(error)
@@ -65,10 +65,10 @@
       function saveToFirebase() {
         let user = auth.currentUser //gets the information of current user 
         let userUID = user.uid //gets the UID of the current user 
+        localStorage.setItem("UID", userUID) //stores the uid of the current user to the firebase 
 
-        //Sets the default user information (starting)
+        //Sets the default user information if they don't have an account created
         let userInformation = {
-          username: document.getElementById("username").value,
           last_login: Date.now(),
           level: 1,
           greenpoints: 0,
@@ -76,19 +76,37 @@
           levelProgress: 0
         }
 
-        set(ref(db, "players/" + userUID), {
-          username: userInformation.username,
-          last_login: userInformation.last_login,
-          level: userInformation.level,
-          greenpoints: userInformation.greenpoints,
-          favor: userInformation.favor,
-          levelProgress: userInformation.levelProgress
-        });
-        localStorage.setItem("username", userInformation.username)
-        localStorage.setItem("level", userInformation.level)
-        localStorage.setItem("greenpoints", userInformation.greenpoints)
-        localStorage.setItem("favor", userInformation.favor)
-        localStorage.setItem("levelProgress", userInformation.levelProgress)
+        const dbRef = ref(db);
+        get(child(dbRef, "players/" + userUID)) //checks if the user account has been created 
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              console.log(snapshot.val()); //prints the userinformation from firebase 
+              //gets the user information from firebase  
+              localStorage.setItem("level", snapshot.val().level)
+              localStorage.setItem("greenpoints", snapshot.val().greenpoints)
+              localStorage.setItem("favor", snapshot.val().favor)
+              localStorage.setItem("levelProgress", snapshot.val().levelProgress)
+            }
+            else {
+              //sets the user information in firebase if account hasn't been created
+              set(ref(db, "players/" + userUID), {
+                last_login: userInformation.last_login,
+                level: userInformation.level,
+                greenpoints: userInformation.greenpoints,
+                favor: userInformation.favor,
+                levelProgress: userInformation.levelProgress
+              });
+              localStorage.setItem("level", userInformation.level)
+              localStorage.setItem("greenpoints", userInformation.greenpoints)
+              localStorage.setItem("favor", userInformation.favor)
+              localStorage.setItem("levelProgress", userInformation.levelProgress)
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+        localStorage.setItem("username", document.getElementById("username").value) //sets the username (won't be saved in firebase)
       }
 
     </script>

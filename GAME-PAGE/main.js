@@ -4,10 +4,10 @@ const usernameTag = document.querySelector(".username");
 //Get user information
 let username = localStorage.getItem("username");
 usernameTag.innerHTML = "Hello " + username + "!";
-let level = localStorage.getItem("level");
-let greenpoints = localStorage.getItem("greenpoints");
-let favor = localStorage.getItem("favor");
-let levelProgress = localStorage.getItem("levelProgress");
+let level = Number(localStorage.getItem("level"));
+let greenpoints = Number(localStorage.getItem("greenpoints"));
+let favor = Number(localStorage.getItem("favor"));
+let levelProgress = Number(localStorage.getItem("levelProgress"));
 
 // building levels
 let roadLevel = 2;
@@ -19,7 +19,6 @@ let coastLevel = 2;
 let gasstationLevel = 2;
 
 //dialogue
-
 let nofavorsText = document.createElement("p");
 let noinnoText = document.createElement("p");
 let eggText = document.createElement("p");
@@ -536,6 +535,7 @@ function sendInput() {
   terminalTextInput.value = "";
   terminalResultWrapper.scrollTop =
     terminalResultWrapper.scrollHeight - terminalResultWrapper.clientHeight;
+  updateValues();
 }
 
 sendBtn.addEventListener("click", sendInput);
@@ -546,6 +546,13 @@ document.addEventListener("keypress", function (e) {
   }
 });
 
+function updateValues() {
+  localStorage.setItem("level", level);
+  localStorage.setItem("greenpoints", greenpoints);
+  localStorage.setItem("favor", favor);
+  localStorage.setItem("levelProgress", levelProgress);
+}
+
 function dontUnderstand() {
   let notText = document.createElement("p");
   notText.textContent = "CAS: Unfortunately, I don't understand you.";
@@ -555,12 +562,14 @@ function dontUnderstand() {
   ignoreText.textContent =
     "POL: Ignore her, what we mean is *please use commands that exist.*";
   terminalResultsCont.append(ignoreText);
+  updateValues();
 }
 
 function levelUp() {
   let levelText = document.createElement("p");
   let reminderText = document.createElement("p");
   let soniceText = document.createElement("p");
+  let bonusText = document.createElement("p");
   levelText.textContent =
     "POL: Hey hey, guess who can now develop a little special something? You! Go on, type /develop /[grid] to develop one of the grids...";
   terminalResultsCont.append(levelText);
@@ -570,6 +579,10 @@ function levelUp() {
   soniceText.textContent =
     "POL: Thats so nice of you CAS! If only you were this nice at my wedding!";
   terminalResultsCont.append(soniceText);
+
+  bonusText.textContent =
+    "POL: P.S, pretty sure you got more bonus Green Points.";
+  terminalResultsCont.append(bonusText);
 }
 
 function checkForCorrectAns(terminalInput, randomQn) {
@@ -579,12 +592,14 @@ function checkForCorrectAns(terminalInput, randomQn) {
     let text = document.createElement("p");
     text.textContent = "Correct!";
     terminalResultsCont.append(text);
-
+    Greenpoints();
     if (level !== 12) {
       if (levelProgress > 75) {
         level += 1;
         favor += 1;
         levelUp();
+        greenpoints += roundNearest5(20 / level);
+
         if (level % 4 == 0) {
           switch (parkLevel) {
             case 2:
@@ -638,9 +653,27 @@ function checkForCorrectAns(terminalInput, randomQn) {
     //nothing happens if they get it wrong
   }
   window.isQuestionAnswered = true;
+  updateValues();
 }
 
-if (levelProgress == 0) {
+function roundNearest5(num) {
+  return Math.round(num / 5) * 5;
+}
+
+function Greenpoints() {
+  greenpoints += 5;
+
+  let wonText = document.createElement("p");
+
+  wonText.textContent =
+    "POL: You have 5 more GreenPoints now, isn't that great? Think of all the things you could buy in the store...";
+  terminalResultsCont.append(wonText);
+  localStorage.setItem("greenpoints", greenpoints);
+  updateValues();
+}
+
+//Shows the text on login
+if (levelProgress == 0 && level == 1) {
   eggText.textContent =
     "000: The Console bridges the gap between - due to - collapse in the ▯▯▯▯ - a Glitch, - filled in the ▯▯▯▯. but Lore has Meaning, has Purpose... the -";
   terminalResultsCont.append(eggText);

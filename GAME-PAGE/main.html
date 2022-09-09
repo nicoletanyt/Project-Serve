@@ -9,27 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://kit.fontawesome.com/056eae0c7b.js" crossorigin="anonymous"></script>
 
-  <!-- firebase configurations
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-    const firebaseConfig = {
-      apiKey: "AIzaSyD2ROLBJ778QE5gm0q9iDC9t4Vki95ahy0",
-      authDomain: "project-serve-220a8.firebaseapp.com",
-      databaseURL: "https://project-serve-220a8-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "project-serve-220a8",
-      storageBucket: "project-serve-220a8.appspot.com",
-      messagingSenderId: "525776138607",
-      appId: "1:525776138607:web:bd89f39f90d8317e2cf89a"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js"
-    const db = getDatabase()
-
-    //References 
-    const  -->
-
   </script>
 </head>
 
@@ -37,8 +16,7 @@
   <!--top menu bar-->
   <div class="top-menu-bar">
     <!-- back to login page -->
-    <button class=" fa-solid fa-right-from-bracket"
-      onclick="location.href='http://127.0.0.1:5500/LOGIN-PAGE/login.html'" class="shop btn">
+    <button class=" fa-solid fa-right-from-bracket btn" id="return">
     </button>
     <!--env sus bar-->
     <div class="env-sus-bar">
@@ -93,6 +71,57 @@ ___       ___     __   __        __   __        ___
       </div>
     </div>
   </div>
+
+  <script type="module">
+    //Importing the firebase methods 
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+    import {
+      getDatabase,
+      set,
+      ref,
+      get,
+      child,
+      update
+    } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+    // Your web app's Firebase configuration 
+    const firebaseConfig = {
+      apiKey: "AIzaSyD5JexZ6OxSuoM4Jc8ufcOduQXvPlOf2eQ",
+      authDomain: "sus-city.firebaseapp.com",
+      databaseURL:
+        "https://sus-city-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "sus-city",
+      storageBucket: "sus-city.appspot.com",
+      messagingSenderId: "437535689858",
+      appId: "1:437535689858:web:488f322361325fb311b89b",
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const auth = getAuth(app)
+    let userUID = localStorage.getItem("UID")
+    console.log(userUID)
+
+    //Get input
+    const returnBtn = document.getElementById("return")
+
+    returnBtn.addEventListener("click", e => {
+      updateToFirebase()
+      setTimeout(function () { window.location.href = "http://127.0.0.1:5500/SIGNUP-PAGE/signup.html" }, 400);
+    })
+
+    function updateToFirebase() {
+      set(ref(db, "players/" + userUID), {
+        last_login: Date.now(),
+        level: localStorage.getItem("level"),
+        greenpoints: localStorage.getItem("greenpoints"),
+        favor: localStorage.getItem("favor"),
+        levelProgress: localStorage.getItem("levelProgress"),
+      })
+    }
+
+  </script>
+
 </body>
 <script src="main.js"></script>
 

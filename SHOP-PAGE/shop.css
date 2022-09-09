@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,17 +6,17 @@
 ::before,
 ::after {
   box-sizing: border-box;
-} 
+}
 body {
   font-family: "Poppins", sans-serif;
   text-align: center;
-  /*   background:#E0E4CC; 
+  background: #e0e4cc;
 }
-hr {
+/* hr {
   border: none;
   background: #e0e4cc;
-  height: 1px;
-  /*   width:60%;
+  height: 1px; */
+/*   width:60%;
   display:block;
   margin-left:0; 
 }
@@ -134,26 +134,33 @@ table td:nth-last-child(1) {
 .Container {
   display: flex;
   flex-direction: row;
+  background-color: #f3e3ca;
+  padding-bottom: 200px;
 }
 
 .Productcont {
-  padding: 200px;
+  padding: 10px;
   display: flex;
   background-color: #18382c;
-  flex-direction: row;
+  flex-direction: column;
   margin: auto;
   margin-top: 50px;
   text-align: center;
   font-family: arial;
+  border-radius: 12px;
 }
 
 .Info {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   border: 3px solid white;
-  color: white;
-  padding: 30px;
+  color: black;
+  padding-left: 40px;
+  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .Buybtn:hover {
@@ -166,19 +173,40 @@ table td:nth-last-child(1) {
 }
 
 .Name {
+  background-color: #d9d9d9;
   padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 12px;
+}
+
+.Price {
+  background-color: #d9d9d9;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 12px;
 }
 
 .Buybtn {
-  margin-left: 50px;
+  background-color: #d9d9d9;
+  margin-left: 400px;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 12px;
+  font-size: 20px;
 }
 
 .Return {
   max-width: 50px;
 }
 
-.used {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 30px;
+.imgs {
+  padding: 20px;
+  background-color: #f3e3ca;
 }

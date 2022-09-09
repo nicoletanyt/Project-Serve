@@ -1,4 +1,4 @@
-/*main page*/
+/* /main page/ */
 
 body {
   display: flex;
@@ -37,11 +37,11 @@ body {
 
 .rectangle {
   width: 90%;
-  height: 40px;
+  height: 4.8721071863581vh;
   background-color: #3a651f;
   position: relative;
-  left: calc(-70px / 2);
-  /*width of circle/2 -> radius of circle + margin of env-sus-bar*/
+  left: calc(-8.526187576126675vh / 2);
+  /* /width of circle/2 -> radius of circle + margin of env-sus-bar/ */
   border-radius: 10px;
   z-index: 0;
   display: flex;
@@ -76,7 +76,7 @@ body {
 }
 
 .fa-solid {
-  font-size: 50px;
+  font-size: 6.090133982947624vh;
   color: #000000;
   background-color: transparent;
   border-color: transparent;
@@ -105,7 +105,7 @@ body {
 .city-layout {
   background-color: #d9d9d9;
   float: left;
-  /*border-radius: inherit;*/
+  /* /border-radius: inherit;/ */
   display: flex;
   flex-wrap: wrap;
   margin-right: 4%;
@@ -148,7 +148,7 @@ body {
   flex-direction: column;
   float: right;
   height: 80vh;
-  width: 65vh;
+  width: 37.05902777777778vw;
 }
 .mainCont h2 {
   display: inline-block;
@@ -163,7 +163,6 @@ body {
 }
 .terminalCont {
   height: 100%;
-  background: black;
   width: inherit;
   padding: 3vh;
   font-family: "Roboto" monospace;
@@ -218,7 +217,7 @@ body {
 }
 
 #city-image {
-  width: inherit;
+  width: auto;
   height: inherit;
   position: absolute;
   z-index: 0;
