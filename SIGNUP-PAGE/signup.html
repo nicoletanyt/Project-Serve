@@ -15,11 +15,6 @@
       <span></span>
       <label>Type a fun username (changed on every login)</label>
     </div>
-    <!-- <div class="txt_field">
-      <input type="password" id="password" required />
-      <span></span>
-      <label>Password</label>
-    </div> -->
     <button id="submit_btn">Sign up</button>
     <script type="module">
       //Importing the firebase methods 
@@ -55,7 +50,7 @@
         signInAnonymously(auth) //creates account for authentication
           .then(() => {
             saveToFirebase()
-            setTimeout(function () { window.location.href = "http://127.0.0.1:5500/GAME-PAGE/main.html" }, 500);
+            setTimeout(function () { window.location.href = "https://sus-city.github.io/GAME-PAGE/main.html" }, 500);
           })
           .catch((error) => {
             console.log(error)

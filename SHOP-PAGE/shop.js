@@ -61,6 +61,6 @@ backBtn.addEventListener("click", () => {
   localStorage.setItem("PineappleManBought", PineappleManBought);
   localStorage.setItem("blimpBought", blimpBought);
   setTimeout(function () {
-    window.location.href = "http://localhost:5500/GAME-PAGE/main.html";
+    window.location.href = "https://sus-city.github.io/GAME-PAGE/main.html";
   }, 500);
 });

@@ -928,7 +928,7 @@ if (levelProgress == 0 && level == 1) {
 shopBtn.addEventListener("click", () => {
   updateValues();
   setTimeout(function () {
-    window.location.href = "http://localhost:5500/SHOP-PAGE/shop.html";
+    window.location.href = "https://sus-city.github.io/SHOP-PAGE/shop.html";
     //127.0.0.1
   }, 1000);
 });
