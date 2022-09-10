@@ -33,7 +33,7 @@ function imageOverlay(imageSource, imageElement) {
 let imageOverlay9 = document.createElement("img");
 let imageOverlay8 = document.createElement("img");
 
-if (blimpBought) {
+if (blimpBought == "true") {
   //if blimp is bought
   imageOverlay(
     "/DEVELOPMENT-PROJ-SERVE/SHOP-BLIMP.png",
@@ -41,7 +41,7 @@ if (blimpBought) {
   );
 }
 
-if (PineappleManBought) {
+if (PineappleManBought == "true") {
   //if pineapple man is bought
   imageOverlay(
     "/DEVELOPMENT-PROJ-SERVE/SHOP-PINEAPPLE-MAN.png",
