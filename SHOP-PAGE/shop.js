@@ -23,19 +23,19 @@ const backBtn = document.querySelector(".fa-angle-left");
 //Set greenpoint (or leaf sticker) levels
 GPointLabel.textContent = "Leaf Stickers:  " + greenpoints;
 
-buyButtonPineappleMan.addEventListener("click", handleBuyPineappleMan);
+boughtBtn(); //if the item was alr bought
 
+//Pineapple Man Button
 function handleBuyPineappleMan() {
   addToCart(buyButtonPineappleMan);
-  PineappleManBought = "true";
-  buyButtonPineappleMan.removeEventListener("click", handleBuyPineappleMan); //so that nothing will happen once this button is clicked
+  boughtBtn();
 }
 
-buyButtonBlimp.addEventListener("click", () => {
+//Blimp Button
+function handleBuyBlimp() {
   addToCart(buyButtonBlimp);
-  blimpBought = "true";
-  buyButtonPineappleMan.removeEventListener("click", handleBuyPineappleMan); //so that nothing will happen once this button is clicked
-});
+  boughtBtn();
+}
 
 function addToCart(btn) {
   for (let i = 0; i < costOfItems.length; i++) {
@@ -46,12 +46,38 @@ function addToCart(btn) {
         greenpoints = greenpoints - costOfItems[i][1];
         alert("Item purchased successfully.");
         GPointLabel.textContent = "Green Points:  " + String(greenpoints); //update greenpoint label
-        btn.textContent = "Bought";
-        btn.style.backgroundColor = "red";
+        switch (btn) {
+          case buyButtonBlimp:
+            blimpBought = "true";
+            break;
+          case buyButtonPineappleMan:
+            PineappleManBought = "true";
+        }
       } else {
         alert("You do not have enough greenpoints to purchase this item.");
       }
     }
+  }
+}
+
+function boughtBtn() {
+  if (blimpBought == "true") {
+    buyButtonBlimp.textContent = "Bought";
+    buyButtonBlimp.style.backgroundColor = "red";
+    buyButtonBlimp.removeEventListener("click", handleBuyBlimp); //so that nothing will happen once this button is clicked
+  } else {
+    buyButtonBlimp.textContent = "Buy";
+    buyButtonBlimp.style.backgroundColor = "green";
+    buyButtonBlimp.addEventListener("click", handleBuyPineappleMan);
+  }
+  if (PineappleManBought == "true") {
+    buyButtonPineappleMan.textContent = "Bought";
+    buyButtonPineappleMan.style.backgroundColor = "red";
+    buyButtonPineappleMan.removeEventListener("click", handleBuyPineappleMan); //so that nothing will happen once this button is clicked
+  } else {
+    buyButtonPineappleMan.textContent = "Buy";
+    buyButtonPineappleMan.style.backgroundColor = "green";
+    buyButtonPineappleMan.addEventListener("click", handleBuyPineappleMan);
   }
 }
 
