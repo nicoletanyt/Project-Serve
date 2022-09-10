@@ -26,19 +26,17 @@
       </div>
     </div>
 
-    <button class="fa-solid fa-shop" onclick="location.href='http://127.0.0.1:5500/SHOP-PAGE/shop.html'"
-      class="shop btn">
+    <button class="fa-solid fa-shop" onclick="" class="shop btn">
     </button>
+
+
     <!--shop-->
-    <div class="setting btn">
-      <i class="fa-solid fa-gear"></i>
-    </div>
+    <div class="GPoint"></div>
     <!--setting-->
+    <div class="favour"></div>
+
     <div class="username">Hello <span></span></div>
     <!--username-->
-    <div class="account">
-      <i class="fa-solid fa-user"></i>
-    </div>
     <!--account-->
   </div>
   <div class="main-menu">
@@ -107,9 +105,8 @@ ___       ___     __   __        __   __        ___
 
     returnBtn.addEventListener("click", e => {
       updateToFirebase()
-      setTimeout(function () { window.location.href = "http://127.0.0.1:5500/SIGNUP-PAGE/signup.html" }, 400);
+      setTimeout(function () { window.location.href = "http://127.0.0.1:5500/SIGNUP-PAGE/signup.html" }, 500);
     })
-
     function updateToFirebase() {
       set(ref(db, "players/" + userUID), {
         last_login: Date.now(),
@@ -117,12 +114,22 @@ ___       ___     __   __        __   __        ___
         greenpoints: localStorage.getItem("greenpoints"),
         favor: localStorage.getItem("favor"),
         levelProgress: localStorage.getItem("levelProgress"),
+        roadLevel: localStorage.getItem("roadLevel"),
+        factoryLevel: localStorage.getItem("factoryLevel"),
+        parkLevel: localStorage.getItem("parkLevel"),
+        officesLevel: localStorage.getItem("officesLevel"),
+        landfillLevel: localStorage.getItem("landfillLevel"),
+        coastLevel: localStorage.getItem("coastLevel"),
+        gasstationLevel: localStorage.getItem("gasstationLevel"),
+        watersourceLevel: localStorage.getItem("watersourceLevel"),
+        blimpBought: localStorage.getItem("blimpBought"),
+        PineappleManBought: localStorage.getItem("PineappleManBought")
       })
     }
 
   </script>
 
 </body>
-<script src="main.js"></script>
+<script type="module" src="main.js"></script>
 
 </html>

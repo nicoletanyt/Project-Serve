@@ -1,5 +1,7 @@
-const cityLayout = document.querySelector(".city-layout"); //grid of squares, aka the playfield
+//getting values from html
+const cityLayout = document.querySelector(".city-layout"); //the playfield
 const usernameTag = document.querySelector(".username");
+const shopBtn = document.querySelector(".fa-shop");
 
 //Get user information
 let username = localStorage.getItem("username");
@@ -8,16 +10,173 @@ let level = Number(localStorage.getItem("level"));
 let greenpoints = Number(localStorage.getItem("greenpoints"));
 let favor = Number(localStorage.getItem("favor"));
 let levelProgress = Number(localStorage.getItem("levelProgress"));
+let blimpBought = localStorage.getItem("blimpBought");
+let PineappleManBought = localStorage.getItem("PineappleManBought");
 
-// building levels
-let roadLevel = 2;
-let factoryLevel = 2;
-let parkLevel = 2;
-let officesLevel = 2;
-let landfillLevel = 2;
-let coastLevel = 2;
-let gasstationLevel = 2;
+//Get building level information from user
+let roadLevel = Number(localStorage.getItem("roadLevel"));
+let factoryLevel = Number(localStorage.getItem("factoryLevel"));
+let parkLevel = Number(localStorage.getItem("parkLevel"));
+let officesLevel = Number(localStorage.getItem("officesLevel"));
+let landfillLevel = Number(localStorage.getItem("landfillLevel"));
+let coastLevel = Number(localStorage.getItem("coastLevel"));
+let gasstationLevel = Number(localStorage.getItem("gasstationLevel"));
+let watersourceLevel = Number(localStorage.getItem("watersourceLevel"));
 
+function imageOverlay(imageSource, imageElement) {
+  imageElement.src = imageSource; //source of image
+  cityLayout.appendChild(imageElement);
+  imageElement.classList.add("overlay-image");
+}
+
+//building if
+let imageOverlay9 = document.createElement("img");
+let imageOverlay8 = document.createElement("img");
+
+if (blimpBought) {
+  //if blimp is bought
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/SHOP-BLIMP.png",
+    document.createElement("img")
+  );
+}
+
+if (PineappleManBought) {
+  //if pineapple man is bought
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/SHOP-PINEAPPLE-MAN.png",
+    document.createElement("img")
+  );
+}
+
+// imageOverlay(
+//   "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-1.png",
+//   document.createElement("img")
+// );
+
+if (roadLevel == 3) {
+  imageOverlay9.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-1.png";
+  cityLayout.appendChild(imageOverlay9);
+  imageOverlay9.classList.add("overlay-image");
+} else if (roadLevel == 4) {
+  imageOverlay9.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-1.png";
+  cityLayout.appendChild(imageOverlay9);
+  imageOverlay9.classList.add("overlay-image");
+
+  imageOverlay8.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
+  cityLayout.appendChild(imageOverlay8);
+  imageOverlay8.classList.add("overlay-image");
+}
+
+let imageOverlay90 = document.createElement("img");
+let imageOverlay80 = document.createElement("img");
+
+if (watersourceLevel == 3) {
+  imageOverlay90.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-1.png";
+  cityLayout.appendChild(imageOverlay90);
+  imageOverlay90.classList.add("overlay-image");
+} else if (watersourceLevel == 4) {
+  imageOverlay90.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-1.png";
+  cityLayout.appendChild(imageOverlay90);
+  imageOverlay90.classList.add("overlay-image");
+
+  imageOverlay80.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-2.png";
+  cityLayout.appendChild(imageOverlay80);
+  imageOverlay80.classList.add("overlay-image");
+}
+
+if (factoryLevel == 3) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-1.png",
+    document.createElement("img")
+  );
+} else if (factoryLevel == 4) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-1.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-2.png",
+    document.createElement("img")
+  );
+}
+
+if (gasstationLevel == 3) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-1.png",
+    document.createElement("img")
+  );
+} else if (gasstationLevel == 4) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-1.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-2.png",
+    document.createElement("img")
+  );
+}
+
+if (landfillLevel == 3) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-1.png",
+    document.createElement("img")
+  );
+} else if (landfillLevel == 4) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-1.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-2.png",
+    document.createElement("img")
+  );
+}
+
+if (officesLevel == 3) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-1.png",
+    document.createElement("img")
+  );
+} else if (officesLevel == 4) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-1.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "//DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png",
+    document.createElement("img")
+  );
+}
+
+if (parkLevel == 3) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/PARK-stage 1.png",
+    document.createElement("img")
+  );
+} else if (parkLevel == 4) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/PARK-stage 1.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/PARK-stage 2.png",
+    document.createElement("img")
+  );
+} else if (parkLevel == 5) {
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/PARK-stage 1.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/PARK-stage 2.png",
+    document.createElement("img")
+  );
+  imageOverlay(
+    "/DEVELOPMENT-PROJ-SERVE/PARK-stage 3.png",
+    document.createElement("img")
+  );
+}
 //dialogue
 let nofavorsText = document.createElement("p");
 let noinnoText = document.createElement("p");
@@ -33,6 +192,12 @@ let parkinno3Text = document.createElement("p");
 let imageOverlay2 = document.createElement("img");
 let imageOverlayed3 = document.createElement("img");
 let imageOverlayed4 = document.createElement("img");
+
+function sayText(theTextContent) {
+  let nameOfParagraph = document.createElement("p");
+  nameOfParagraph.textContent = theTextContent;
+  terminalResultsCont.append(nameOfParagraph);
+}
 
 nofavorsText.textContent =
   "POL: The citizens ran out of motivation I guess. Time to answer... more questions.";
@@ -61,132 +226,138 @@ const arrayOfQuestions = [
     "EVs do not.",
     1
   ),
-  // new Question(
-  //   "What component is not in an AV?",
-  //   "Actuators",
-  //   "Combustion Engines",
-  //   "Sensors",
-  //   "Semiconductors",
-  //   2
-  // ), //oic aEEHEHAAHEHAEHAHEHAEH why are you running why are you running r u okah SAMIR YOU ARE BREAKING THE CAR
-  // new Question(
-  //   "What is not one of the advantages of AVs?",
-  //   "Decreased road accidents",
-  //   "Lesser time spent travelling",
-  //   "Lower cost to manufacture",
-  //   "Reduced air pollution",
-  //   3
-  // ),
-  // new Question(
-  //   "How many charging points will be available in Singapore by 2030?",
-  //   "30000",
-  //   "40000",
-  //   "50000",
-  //   "60000",
-  //   4
-  // ),
-  // new Question(
-  //   "What are NOT some efforts put in to encourage the transition to EVs?",
-  //   "Reduced ERP charges on Electric vehicles from 2030",
-  //   "Cleaner energy models for all new car and taxi registrations from 2030",
-  //   "No new diesel car and taxi registrations from 2025",
-  //   "EEAI (EV Early Adoption Incentive) subsidies",
-  //   1
-  // ),
-  // new Question(
-  //   "Who benefits from LTA's initiative, Green Man + ?",
-  //   "Regular pedestrians",
-  //   "Elderly",
-  //   "Emergency workers",
-  //   "Young children & Toddlers",
-  //   2
-  // ),
-  // new Question(
-  //   "What are some challenges in Transport planning?",
-  //   "Land scarcity",
-  //   "Topography issues",
-  //   "Traffic conditions",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "How big will Singapore's rail network be by 2030?",
-  //   "230km",
-  //   "310km",
-  //   "360km",
-  //   "420km",
-  //   3
-  // ),
-  // new Question(
-  //   "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
-  //   "30min city, 10 min towns",
-  //   "40min city, 15 min towns",
-  //   "35min city, 15 min towns",
-  //   "45min city, 20 min towns",
-  //   4
-  // ),
-  // new Question(
-  //   "What are the benefits of using LEDs?",
-  //   "No impact on the environment",
-  //   "Flexible designs",
-  //   "Low cost up-front",
-  //   "All of the above",
-  //   2
-  // ),
-  // new Question(
-  //   "LED lights are more power efficient than...",
-  //   "Fluorescent lamps",
-  //   "Incandescent bulbs",
-  //   "Halogen Light Bulbs",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "Conditions that affect solar panel efficiency",
-  //   "Humidity",
-  //   "Shade",
-  //   "Temperature",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "How many households does Singapore plan on powering (per year)by 2030?",
-  //   "300000",
-  //   "350000",
-  //   "400000",
-  //   "530000",
-  //   2
-  // ),
-  // new Question(
-  //   "Recycling reduces...",
-  //   "Water pollution",
-  //   "Energy Usage",
-  //   "Air pollution",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
-  //   "70%",
-  //   "90%",
-  //   "100%",
-  //   "150%",
-  //   1
-  // ),
-  // new Question(
-  //   "Green roofs and walls DO NOT help...",
-  //   "Regulate building internal temperature",
-  //   "Decrease incidence of lightning strikes",
-  //   "One's mental health",
-  //   "Reduce carbon footprint",
-  //   2
-  // ),
-  //doing one question then so we need too add more elements we can add without having to add to the other ones and stuff
+  //   // new Question(
+  //   //   "What component is not in an AV?",
+  //   //   "Actuators",
+  //   //   "Combustion Engines",
+  //   //   "Sensors",
+  //   //   "Semiconductors",
+  //   //   2
+  //   // ), //oic aEEHEHAAHEHAEHAHEHAEH why are you running why are you running r u okah SAMIR YOU ARE BREAKING THE CAR
+  //   // new Question(
+  //   //   "What is not one of the advantages of AVs?",
+  //   //   "Decreased road accidents",
+  //   //   "Lesser time spent travelling",
+  //   //   "Lower cost to manufacture",
+  //   //   "Reduced air pollution",
+  //   //   3
+  //   // ),
+  //   // new Question(
+  //   //   "How many charging points will be available in Singapore by 2030?",
+  //   //   "30000",
+  //   //   "40000",
+  //   //   "50000",
+  //   //   "60000",
+  //   //   4
+  //   // ),
+  //   // new Question(
+  //   //   "What are NOT some efforts put in to encourage the transition to EVs?",
+  //   //   "Reduced ERP charges on Electric vehicles from 2030",
+  //   //   "Cleaner energy models for all new car and taxi registrations from 2030",
+  //   //   "No new diesel car and taxi registrations from 2025",
+  //   //   "EEAI (EV Early Adoption Incentive) subsidies",
+  //   //   1
+  //   // ),
+  //   // new Question(
+  //   //   "Who benefits from LTA's initiative, Green Man + ?",
+  //   //   "Regular pedestrians",
+  //   //   "Elderly",
+  //   //   "Emergency workers",
+  //   //   "Young children & Toddlers",
+  //   //   2
+  //   // ),
+  //   // new Question(
+  //   //   "What are some challenges in Transport planning?",
+  //   //   "Land scarcity",
+  //   //   "Topography issues",
+  //   //   "Traffic conditions",
+  //   //   "All of the above",
+  //   //   4
+  //   // ),
+  //   // new Question(
+  //   //   "How big will Singapore's rail network be by 2030?",
+  //   //   "230km",
+  //   //   "310km",
+  //   //   "360km",
+  //   //   "420km",
+  //   //   3
+  //   // ),
+  //   // new Question(
+  //   //   "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
+  //   //   "30min city, 10 min towns",
+  //   //   "40min city, 15 min towns",
+  //   //   "35min city, 15 min towns",
+  //   //   "45min city, 20 min towns",
+  //   //   4
+  //   // ),
+  //   // new Question(
+  //   //   "What are the benefits of using LEDs?",
+  //   //   "No impact on the environment",
+  //   //   "Flexible designs",
+  //   //   "Low cost up-front",
+  //   //   "All of the above",
+  //   //   2
+  //   // ),
+  //   // new Question(
+  //   //   "LED lights are more power efficient than...",
+  //   //   "Fluorescent lamps",
+  //   //   "Incandescent bulbs",
+  //   //   "Halogen Light Bulbs",
+  //   //   "All of the above",
+  //   //   4
+  //   // ),
+  //   // new Question(
+  //   //   "Conditions that affect solar panel efficiency",
+  //   //   "Humidity",
+  //   //   "Shade",
+  //   //   "Temperature",
+  //   //   "All of the above",
+  //   //   4
+  //   // ),
+  //   // new Question(
+  //   //   "How many households does Singapore plan on powering (per year)by 2030?",
+  //   //   "300000",
+  //   //   "350000",
+  //   //   "400000",
+  //   //   "530000",
+  //   //   2
+  //   // ),
+  //   // new Question(
+  //   //   "Recycling reduces...",
+  //   //   "Water pollution",
+  //   //   "Energy Usage",
+  //   //   "Air pollution",
+  //   //   "All of the above",
+  //   //   4
+  //   // ),
+  //   // new Question(
+  //   //   "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
+  //   //   "70%",
+  //   //   "90%",
+  //   //   "100%",
+  //   //   "150%",
+  //   //   1
+  //   // ),
+  //   // new Question(
+  //   //   "Green roofs and walls DO NOT help...",
+  //   //   "Regulate building internal temperature",
+  //   //   "Decrease incidence of lightning strikes",
+  //   //   "One's mental health",
+  //   //   "Reduce carbon footprint",
+  //   //   2
+  //   // ),
+  //   //doing one question then so we need too add more elements we can add without having to add to the other ones and stuff
 ];
 
 //level indicator
 const levelIndicator = document.querySelector(".circle");
 const levelProgressBar = document.querySelector(".level-progress");
+const levelGreenPointts = document.querySelector(".GPoint");
+const levelFavour = document.querySelector(".favour");
+
+levelFavour.textContent = "Sus Points: " + String(favor);
+levelGreenPointts.textContent = "Leaf Stickers: " + String(greenpoints);
+
 levelIndicator.textContent = level;
 levelProgressBar.style.width = levelProgress + "%";
 
@@ -222,10 +393,10 @@ const arrayOfCommands = [
   new Command("/develop /watersource", "Develop the grid for the water source"),
   new Command("/develop /landfill", "Develop the grid for the landfill"),
   new Command("/develop /gasstation", "Develop the grid for the gas station"),
-  new Command(
-    "/develop /park",
-    "Develop the grid for the park (only available after you buy it in the store)"
-  ), //brought in shop so this shouldn't appear on default
+  // new Command(
+  //   "/develop /park",
+  //   "Develop the grid for the park (only available after you buy it in the store)"
+  // ), //brought in shop so this shouldn't appear on default
 ];
 
 function sendInput() {
@@ -311,20 +482,27 @@ function sendInput() {
         switch (roadLevel) {
           case 2:
             imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-1.png";
-
-            terminalResultsCont.append(
-              "POL: After all you did, they added... bicycles! That's great. Seriously though, bike sharing would help carbon emissions. I mean, its better than cars really.-"
+            sayText(
+              "POL: …Bicycles. This is..this is their next idea. We’ve given them so much criticism about their carbon footprint, and this is all they can think of? It’s the bare minimum! What happened to humans being innovative!—"
             );
+            sayText(
+              "CAS: Stop being so dramatic. You already knew this would be the next development; it’s in the Lore. Which, I’m going to assume, you have read? Even if you hadn’t, you’re still wasting far too much Dialogue on your reactions, when we should be explaining the developments…You’re glaring at me, but I haven’t said anything strange."
+            );
+
+            sayText(
+              "POL: No, no, you’re right. Bicycle-sharing may be a simple method, but they’re efficient. I shouldn’t underestime the humans’ system of bicycle stations that users can check bicycles out of. They can ride their destination and park the bike in a nearby docking station. With bicycle-sharing, there will be less vehicles on the road, reducing carbon emissions and greenhouse gases in the air. There are many bikesharing services in Singapore, including Anywheel, SG Bike and HelloRide. …Good enough of an explanation for you?"
+            );
+
             break;
           case 3:
             imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
             let dumbText = document.createElement("p");
             dumbText.textContent =
-              "POL: Ah nice, race flag banners. Should improve congestio";
+              "POL: Now this is a proper environmental measure! Nothing like those bicycles from before! The implementation of charges when drives travel on roads leading into the cities during peak hours; it preys on the humans’ weakness for money! Drivers are discouraged from using certain roads, especially during peak hours, because they don’t want to pay more during such hours. This diverts traffic, easing congestion in certain roads. Brutal genius.";
             terminalResultsCont.append(dumbText);
             let nerdText = document.createElement("p");
             nerdText.textContent =
-              "CAS:  Those are Electronic Road Pricing gantries.  ERP gantries erected at key positions charge motorists for utilising certain roads at times when these roads are more prone to congestion. Those who travel on ERP roads enjoy smoother journeys and reach their destinations in a shorter time. ERP rates are determined based on traffic conditions.";
+              "CAS: The bicycles were fine, POL. Both work just the same in reducing the number of vehicles on the road. Then again, the bicycles are much more widespread. ERP gantries are more commonly found along central business districts such as Orchard Road and near retail shops such as the ION, Tangs, Wheelock Place and the Shaw Centre. ";
             terminalResultsCont.append(nerdText);
 
             let scoffText = document.createElement("p");
@@ -366,7 +544,6 @@ function sendInput() {
 
             factory3Text.textContent =
               "POL: So fragile! Length of exposure, amount and type of the pollutants varies, and each human is affected so differently…Humans face so many health risks. We must keep working to keep the city Sustainable, User. To the next question!";
-            terminalResultsCont.append(factory3Text);
             break;
           case 3:
             imageOverlay1.src = "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-2.png";
@@ -418,6 +595,13 @@ function sendInput() {
             break;
           case 3:
             imageOverlay3.src = "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png";
+
+            sayText(
+              "POL: Again. Seriously. Solar panels, again…it’s always going to be solar panels, huh? Over, and over, and over, again! It’s never going to— haha— stop being solar panels—"
+            );
+            sayText(
+              "CAS: POL? POL, you’re— are you Glitching? Hey! Hey, listen to me, stop! POL! FOr once, would you please just listen!"
+            );
             break;
           case 4:
             imageOverlay3.src = "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png";
@@ -440,12 +624,34 @@ function sendInput() {
         switch (coastLevel) {
           case 2:
             imageOverlay4.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-1.png";
+            sayText(
+              "POL: 3 days? But that’s so short! User, is it really true that you can only survive without water for 3 days? What about your city, User? How can we possibly do anything within 3 days?! CAS, we need to get the humans hydrated right now!"
+            );
+
+            sayText(
+              "CAS: Oh, stop panicking. They don’t need water, they’re Pixels. The Lore already prepared for that anyways. Look, the User implemented a rain collection system. This system takes advantage of the natural water cycle, allowing humans to collect water for their purposes later on. Of course, if they must drink the water, it has to go through a heavy filtering process first."
+            );
+
+            sayText(
+              "POL: Are the tanks always at the beach? That’s rather impractical. If they really wanted to use natural cycles to their advantage, wouldn’t they be placing them everywhere? It rains pretty much everywhere, after all. User! You could collect all the water you need to sustain yourself for 3 days if you built collection tanks at your own house!"
+            );
+
             break;
           case 3:
             imageOverlay4.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-2.png";
+
+            sayText(
+              "POL: Desalination. It’s a fairly similar concept to filtering. You can see that it’s placed right at the Coast in the Simulation. Humans are finally utilising this huge body of water, that’s right in front of them. Still, their main goal is to remove any impurities from the seawater, turning the seawater into fresh drinking water. Can’t they just drink their water  straight from the source?"
+            );
+
             break;
           case 4:
             imageOverlay4.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-2.png";
+
+            sayText(
+              "CAS: The Lore claims that the humans cannot survive such high amounts of salt. You already knew that, POL; I remember your experiements before the Simulation. Stop playing the fool when you are fully aware of the resourcesfulness and grit of the humans, much more than I am. The water undegoes reverse osmosis thanks to semipermeable membranes. Impurities like salt and dirt have large particles, so they are left behind as the water passes throigh these membranes."
+            );
+
             break;
         }
         favor -= 1;
@@ -465,9 +671,31 @@ function sendInput() {
         switch (landfillLevel) {
           case 2:
             imageOverlay5.src = "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-1.png";
+            sayText(
+              "CAS: Ah, bins. A very minor change, and yet this would can have a rather large impact in the long-run. As long as they do it right, of course. If the materials they try to recycle are contaminated by food waste or human pieces, they can’t be used to recycle. However, if they ensure that everything they throw in these bins are not contaminated, they help preseve natural resources for longer, and reduce their carbon footprint."
+            );
+            sayText(
+              "POL: The logic behind this Development is its convenciency, isn’t it? User, did you know that the reason why so many humans don’t recycle is because they find it tedious. They dislike the entire process, from cleaning trash to finding bins. Luckily, Divine Entities like us are much smarter, and we have allowed you to integrate a convenient Development! Now, the humans need barely any motivation! If they do, well, I would be honoured to provide some incentives for them."
+            );
+
             break;
           case 3:
             imageOverlay5.src = "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-2.png";
+            sayText(
+              "CAS: Our Dialogue for this one is surprisingly excited, similar to the previous Landfill Development. It seems that we are supposed to be promoting the benefits of recycling to the User, but again, the Lore wants us to mention other things as well. "
+            );
+
+            sayText(
+              "POL: Let me see, you know I don’t read that thing. Hm, a beloved robot on a space adventure…? A plant in a world covered in trash? Tsk, I knew this would be useless as always. This doesn’t mean anything, CAS! Do you really expect me to believe that humans have invented space travel? Look at the User’s city, do you see rocket scientists anywhere?"
+            );
+
+            sayText(
+              "CAS: The Simulation is different from Reality. It’s possible the Lore is referring to creations on the User’s Platform. not ours. Surely someone there has created one of these recycling robots. The Flesh Entities certainly have a fascination for Artificial Intelligence, and the potential of these robots are incredible. Their Code makes them helpful, useful! They actually do important work in Reality!…Besides, separation is a crucial step in recycling."
+            );
+
+            sayText(
+              "POL: …I agree, CAS. It’s better when materials that are too different are separated. Sometimes, Divine Entities have no busy interacting with Pixel Entities…or each other."
+            );
             break;
           case 4:
             imageOverlay5.src = "/DEVELOPMENT-PROJ-SERVE/DEV-LANDFILL-2.png";
@@ -511,6 +739,7 @@ function sendInput() {
 
           case 3:
             imageOverlay6.src = "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-2.png";
+
             break;
           case 4:
             imageOverlay6.src = "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-2.png";
@@ -547,10 +776,23 @@ document.addEventListener("keypress", function (e) {
 });
 
 function updateValues() {
+  levelFavour.textContent = "Sus Points: " + String(favor);
+  levelGreenPointts.textContent = "Leaf Stickers: " + String(greenpoints);
+
   localStorage.setItem("level", level);
   localStorage.setItem("greenpoints", greenpoints);
+  console.log(localStorage.getItem("greenpoints"));
   localStorage.setItem("favor", favor);
   localStorage.setItem("levelProgress", levelProgress);
+  //Building Variables
+  localStorage.setItem("roadLevel", roadLevel);
+  localStorage.setItem("factoryLevel", factoryLevel);
+  localStorage.setItem("parkLevel", parkLevel);
+  localStorage.setItem("officesLevel", officesLevel);
+  localStorage.setItem("landfillLevel", landfillLevel);
+  localStorage.setItem("coastLevel", coastLevel);
+  localStorage.setItem("gasstationLevel", gasstationLevel);
+  localStorage.setItem("watersourceLevel", watersourceLevel);
 }
 
 function dontUnderstand() {
@@ -571,7 +813,7 @@ function levelUp() {
   let soniceText = document.createElement("p");
   let bonusText = document.createElement("p");
   levelText.textContent =
-    "POL: Hey hey, guess who can now develop a little special something? You! Go on, type /develop /[grid] to develop one of the grids...";
+    "POL: Hey hey, guess who got enough Sus Points, and can now develop a little special something? You! Go on, type /develop /[grid] to develop one of the grids...";
   terminalResultsCont.append(levelText);
   reminderText.textContent = "CAS: Do /help if you forget the grid.";
   terminalResultsCont.append(reminderText);
@@ -581,7 +823,7 @@ function levelUp() {
   terminalResultsCont.append(soniceText);
 
   bonusText.textContent =
-    "POL: P.S, pretty sure you got more bonus Green Points.";
+    "POL: P.S, pretty sure you got more bonus Leaf Stickers.";
   terminalResultsCont.append(bonusText);
 }
 
@@ -592,9 +834,9 @@ function checkForCorrectAns(terminalInput, randomQn) {
     let text = document.createElement("p");
     text.textContent = "Correct!";
     terminalResultsCont.append(text);
-    Greenpoints();
+    updateGreenpoints();
     if (level !== 12) {
-      if (levelProgress > 75) {
+      if (levelProgress > 50) {
         level += 1;
         favor += 1;
         levelUp();
@@ -633,8 +875,8 @@ function checkForCorrectAns(terminalInput, randomQn) {
 
         levelProgress = 0;
       } else {
-        levelProgress == 75 ? (levelProgress += 99) : (levelProgress += 100);
-        // levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25);
+        // levelProgress == 75 ? (levelProgress += 99) : (levelProgress += 100);
+        levelProgress == 75 ? (levelProgress += 24) : (levelProgress += 25);
       }
     } else {
       level = 12; //max level
@@ -650,6 +892,7 @@ function checkForCorrectAns(terminalInput, randomQn) {
     let sozText = document.createElement("p");
     sozText.textContent = "POL: Soz. Don't worry, happens with all... gods.";
     terminalResultsCont.append(sozText);
+
     //nothing happens if they get it wrong
   }
   window.isQuestionAnswered = true;
@@ -660,15 +903,14 @@ function roundNearest5(num) {
   return Math.round(num / 5) * 5;
 }
 
-function Greenpoints() {
+function updateGreenpoints() {
   greenpoints += 5;
 
   let wonText = document.createElement("p");
-
   wonText.textContent =
-    "POL: You have 5 more GreenPoints now, isn't that great? Think of all the things you could buy in the store...";
+    "POL: You have 5 more Leaf Stickers now, isn't that great? Think of all the things you could buy in the store...";
   terminalResultsCont.append(wonText);
-  localStorage.setItem("greenpoints", greenpoints);
+  // localStorage.setItem("greenpoints", greenpoints);
   updateValues();
 }
 
@@ -682,3 +924,45 @@ if (levelProgress == 0 && level == 1) {
   egg3Text.textContent = "POL: Ah, welcome User!";
   terminalResultsCont.append(egg3Text);
 }
+
+shopBtn.addEventListener("click", () => {
+  updateValues();
+  setTimeout(function () {
+    window.location.href = "http://localhost:5500/SHOP-PAGE/shop.html";
+    //127.0.0.1
+  }, 1000);
+});
+
+//     case 2:
+//       imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-1.png";
+//       imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
+
+//       break;
+//     case 3:
+//       imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
+//       let dumbText = document.createElement("p");
+//       dumbText.textContent =
+//         "POL: Now this is a proper environmental measure! Nothing like those bicycles from before! The implementation of charges when drives travel on roads leading into the cities during peak hours; it preys on the humans’ weakness for money! Drivers are discouraged from using certain roads, especially during peak hours, because they don’t want to pay more during such hours. This diverts traffic, easing congestion in certain roads. Brutal genius.";
+//       terminalResultsCont.append(dumbText);
+//       let nerdText = document.createElement("p");
+//       nerdText.textContent =
+//         "CAS: The bicycles were fine, POL. Both work just the same in reducing the number of vehicles on the road. Then again, the bicycles are much more widespread. ERP gantries are more commonly found along central business districts such as Orchard Road and near retail shops such as the ION, Tangs, Wheelock Place and the Shaw Centre. ";
+//       terminalResultsCont.append(nerdText);
+
+//       let scoffText = document.createElement("p");
+//       scoffText.textContent = "POL: *scoffs* Nerd.";
+//       terminalResultsCont.append(scoffText);
+//       break;
+//     case 4:
+//       imageOverlay.src = "/DEVELOPMENT-PROJ-SERVE/DEV-ROAD-2.png";
+//       break;
+//   }
+//   favor = favor - 1;
+//   roadLevel += 1;
+//   cityLayout.appendChild(imageOverlay);
+//   imageOverlay.classList.add("overlay-image");
+// } else if (roadLevel == 4) {
+//   terminalResultsCont.append(noinnoText);
+// } else {
+//   terminalResultsCont.append(nofavorsText);
+// }

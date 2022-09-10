@@ -1,153 +1,66 @@
-// updateCartTotal();
+//Display username
+const usernameTag = document.querySelector(".Username");
+let username = localStorage.getItem("username");
+usernameTag.textContent = "Hello " + username + "!";
 
-// document.getElementById("emptycart").addEventListener("click", emptyCart);
-// document.getElementById("checkout").addEventListener("click", checkOut);
-// var btns = document.getElementsByClassName("addtocart");
-// for (var i = 0; i < btns.length; i++) {
-//   btns[i].addEventListener("click", function () {
-//     addToCart(this);
-//   });
-
-
-
+//Cost of items
+const costOfItems = [
+  ["PineappleMan", 10],
+  ["Blimp", 30],
+];
+//Getting the variables from LocalStorage
+let blimpBought = localStorage.getItem("blimpBought");
+let PineappleManBought = localStorage.getItem("PineappleManBought");
 let greenpoints = Number(localStorage.getItem("greenpoints"));
 
+//Get elements from HTML
+const buyButtonPineappleMan = document.querySelector(".PineappleMan"); //buy button for pineapple man
+const buyButtonBlimp = document.querySelector(".Blimp"); //buy button for blimp
+const cartCont = document.querySelector(".cartCont");
+const totalCost = document.querySelector(".total-cost");
+const GPointLabel = document.querySelector(".GPoint");
+const backBtn = document.querySelector(".fa-angle-left");
+//Set greenpoint (or leaf sticker) levels
+GPointLabel.textContent = "Leaf Stickers:  " + greenpoints;
 
+buyButtonPineappleMan.addEventListener("click", handleBuyPineappleMan);
 
-
-const Buybtns = document.querySelector("#Buybtns");
-
-// function addToCart(elem) {
-//   //init
-//   var sibs = [];
-//   var getprice;
-//   var getproductName;
-//   var cart = [];
-//   var stringCart;
-//   //cycles siblings for product info near the add button
-//   while ((elem = elem.previousSibling)) {
-//     if (elem.nodeType === 3) continue; // text node
-//     if (elem.className == "price") {
-//       getprice = elem.innerText;
-//     }
-//     if (elem.className == "productname") {
-//       getproductName = elem.innerText;
-//     }
-//     sibs.push(elem);
-//   }
-//   //create product object
-//   var product = {
-//     productname: getproductName,
-//     price: getprice,
-//   };
-//   //convert product data to JSON for storage
-//   var stringProduct = JSON.stringify(product);
-
-//   if (!sessionStorage.getItem("cart")) {
-//     //append product JSON object to cart array
-//     cart.push(stringProduct);
-//     //cart to JSON
-//     stringCart = JSON.stringify(cart);
-//     //create session storage cart item
-//     sessionStorage.setItem("cart", stringCart);
-//     addedToCart(getproductName);
-//     updateCartTotal();
-//   } else {
-//     //get existing cart data from storage and convert back into array
-//     cart = JSON.parse(sessionStorage.getItem("cart"));
-//     //append new product JSON object
-//     cart.push(stringProduct);
-//     //cart back to JSON
-//     stringCart = JSON.stringify(cart);
-//     //overwrite cart data in sessionstorage
-//     sessionStorage.setItem("cart", stringCart);
-//     addedToCart(getproductName);
-//     updateCartTotal();
-//   }
-// }
-
-// function updateCartTotal() {
-//   //init
-//   var total = 0;
-//   var price = 0;
-//   var items = 0;
-//   var productname = "";
-//   var carttable = "";
-//   if (sessionStorage.getItem("cart")) {
-//     //get cart data & parse to array
-//     var cart = JSON.parse(sessionStorage.getItem("cart"));
-//     //get no of items in cart
-//     items = cart.length;
-//     //loop over cart array
-//     for (var i = 0; i < items; i++) {
-//       //convert each JSON product in array back into object
-//       var x = JSON.parse(cart[i]);
-//       //get property value of price
-//       price = parseFloat(x.price.split("$")[1]);
-//       productname = x.productname;
-//       //add price to total
-//       carttable +=
-//         "<tr><td>" +
-//         productname +
-//         "</td><td>$" +
-//         price.toFixed(2) +
-//         "</td></tr>";
-//       total += price;
-//     }
-//   }
-//   //update total on website HTML
-//   document.getElementById("total").innerHTML = total.toFixed(2);
-//   //insert saved products to cart table
-//   document.getElementById("carttable").innerHTML = carttable;
-//   //update items in cart on website HTML
-//   document.getElementById("itemsquantity").innerHTML = items;
-// }
-// //user feedback on successful add
-// function addedToCart(pname) {
-//   var message = pname + " was added to the cart";
-//   var alerts = document.getElementById("alerts");
-//   alerts.innerHTML = message;
-//   if (!alerts.classList.contains("message")) {
-//     alerts.classList.add("message");
-//   }
-// }
-
-// function emptyCart() {
-//   //remove cart session storage object & refresh cart totals
-//   if (sessionStorage.getItem("cart")) {
-//     sessionStorage.removeItem("cart");
-//     updateCartTotal();
-//     //clear message and remove class style
-//     var alerts = document.getElementById("alerts");
-//     alerts.innerHTML = "";
-//     if (alerts.classList.contains("message")) {
-//       alerts.classList.remove("message");
-//     }
-//   }
-// }
-
-// function checkOut() {
-//   //remove cart session storage object & refresh cart totals
-//   if (sessionStorage.getItem("cart")) {
-//     sessionStorage.removeItem("cart");
-//     updateCartTotal();
-//     //clear message and remove class style
-//     var alerts = document.getElementById("alerts");
-//     alerts.innerHTML = "";
-//     if (alerts.classList.contains("message")) {
-//       alerts.classList.remove("message");
-//     }
-//   }
-//   alert("Thanks for your purchase!");
-// }
-
-
-
-Buybtns.addEventListener("click", e => {
-
-greenpoints = greenpoints - 11
-
+function handleBuyPineappleMan() {
+  addToCart(buyButtonPineappleMan);
+  PineappleManBought = "true";
+  buyButtonPineappleMan.removeEventListener("click", handleBuyPineappleMan); //so that nothing will happen once this button is clicked
 }
 
+buyButtonBlimp.addEventListener("click", () => {
+  addToCart(buyButtonBlimp);
+  blimpBought = "true";
+  buyButtonPineappleMan.removeEventListener("click", handleBuyPineappleMan); //so that nothing will happen once this button is clicked
+});
 
+function addToCart(btn) {
+  for (let i = 0; i < costOfItems.length; i++) {
+    //if this is the item that they are buying
+    if (btn.classList.contains(costOfItems[i][0])) {
+      if (greenpoints - costOfItems[i][1] >= 0) {
+        //if the user has enough greenpoints to purchase the item
+        greenpoints = greenpoints - costOfItems[i][1];
+        alert("Item purchased successfully.");
+        GPointLabel.textContent = "Green Points:  " + String(greenpoints); //update greenpoint label
+        btn.textContent = "Bought";
+        btn.style.backgroundColor = "red";
+      } else {
+        alert("You do not have enough greenpoints to purchase this item.");
+      }
+    }
+  }
+}
 
+backBtn.addEventListener("click", () => {
+  //update localStorage before leaving this page
+  localStorage.setItem("greenpoints", greenpoints);
+  localStorage.setItem("PineappleManBought", PineappleManBought);
+  localStorage.setItem("blimpBought", blimpBought);
+  setTimeout(function () {
+    window.location.href = "http://localhost:5500/GAME-PAGE/main.html";
+  }, 500);
+});

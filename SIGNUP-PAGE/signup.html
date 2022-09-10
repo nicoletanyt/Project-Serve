@@ -55,7 +55,7 @@
         signInAnonymously(auth) //creates account for authentication
           .then(() => {
             saveToFirebase()
-            setTimeout(function () { window.location.href = "http://127.0.0.1:5500/GAME-PAGE/main.html" }, 400);
+            setTimeout(function () { window.location.href = "http://127.0.0.1:5500/GAME-PAGE/main.html" }, 500);
           })
           .catch((error) => {
             console.log(error)
@@ -73,19 +73,39 @@
           level: 1,
           greenpoints: 0,
           favor: 0,
-          levelProgress: 0
+          levelProgress: 0,
+          //building stuff
+          roadLevel: 2,
+          factoryLevel: 2,
+          parkLevel: 2,
+          officesLevel: 2,
+          landfillLevel: 2,
+          coastLevel: 2,
+          gasstationLevel: 2,
+          watersourceLevel: 2,
+          blimpBought: "false",
+          PineappleManBought: "false",
         }
 
         const dbRef = ref(db);
         get(child(dbRef, "players/" + userUID)) //checks if the user account has been created 
           .then((snapshot) => {
             if (snapshot.exists()) {
-              console.log(snapshot.val()); //prints the userinformation from firebase 
               //gets the user information from firebase  
               localStorage.setItem("level", snapshot.val().level)
               localStorage.setItem("greenpoints", snapshot.val().greenpoints)
               localStorage.setItem("favor", snapshot.val().favor)
-              localStorage.setItem("levelProgress", snapshot.val().levelProgress)
+              //the building variables 
+              localStorage.setItem("roadLevel", snapshot.val().roadLevel)
+              localStorage.setItem("factoryLevel", snapshot.val().factoryLevel)
+              localStorage.setItem("parkLevel", snapshot.val().parkLevel)
+              localStorage.setItem("officesLevel", snapshot.val().officesLevel)
+              localStorage.setItem("landfillLevel", snapshot.val().landfillLevel)
+              localStorage.setItem("coastLevel", snapshot.val().coastLevel)
+              localStorage.setItem("gasstationLevel", snapshot.val().gasstationLevel)
+              localStorage.setItem("watersourceLevel", snapshot.val().watersourceLevel)
+              localStorage.setItem("blimpBought", snapshot.val().blimpBought)
+              localStorage.setItem("PineappleManBought", snapshot.val().PineappleManBought)
             }
             else {
               //sets the user information in firebase if account hasn't been created
@@ -94,12 +114,34 @@
                 level: userInformation.level,
                 greenpoints: userInformation.greenpoints,
                 favor: userInformation.favor,
-                levelProgress: userInformation.levelProgress
+                levelProgress: userInformation.levelProgress,
+                //building stuff
+                roadLevel: userInformation.roadLevel,
+                factoryLevel: userInformation.factoryLevel,
+                parkLevel: userInformation.parkLevel,
+                officesLevel: userInformation.officesLevel,
+                landfillLevel: userInformation.landfillLevel,
+                coastLevel: userInformation.coastLevel,
+                gasstationLevel: userInformation.gasstationLevel,
+                watersourceLevel: userInformation.watersourceLevel,
+                blimpBought: userInformation.blimpBought,
+                PineappleManBought: userInformation.PineappleManBought
               });
               localStorage.setItem("level", userInformation.level)
               localStorage.setItem("greenpoints", userInformation.greenpoints)
               localStorage.setItem("favor", userInformation.favor)
               localStorage.setItem("levelProgress", userInformation.levelProgress)
+              //building variables
+              localStorage.setItem("roadLevel", userInformation.roadLevel)
+              localStorage.setItem("factoryLevel", userInformation.factoryLevel)
+              localStorage.setItem("parkLevel", userInformation.parkLevel)
+              localStorage.setItem("officesLevel", userInformation.officesLevel)
+              localStorage.setItem("landfillLevel", userInformation.landfillLevel)
+              localStorage.setItem("coastLevel", userInformation.coastLevel)
+              localStorage.setItem("gasstationLevel", userInformation.gasstationLevel)
+              localStorage.setItem("watersourceLevel", userInformation.watersourceLevel)
+              localStorage.setItem("blimpBought", userInformation.blimpBought)
+              localStorage.setItem("PineappleManBought", userInformation.PineappleManBought)
             }
           })
           .catch((error) => {
