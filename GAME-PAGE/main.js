@@ -226,126 +226,126 @@ const arrayOfQuestions = [
     "EVs do not.",
     1
   ),
-  // new Question(
-  //   "What component is not in an AV?",
-  //   "Actuators",
-  //   "Combustion Engines",
-  //   "Sensors",
-  //   "Semiconductors",
-  //   2
-  // ), //oic aEEHEHAAHEHAEHAHEHAEH why are you running why are you running r u okah SAMIR YOU ARE BREAKING THE CAR
-  // new Question(
-  //   "What is not one of the advantages of AVs?",
-  //   "Decreased road accidents",
-  //   "Lesser time spent travelling",
-  //   "Lower cost to manufacture",
-  //   "Reduced air pollution",
-  //   3
-  // ),
-  // new Question(
-  //   "How many charging points will be available in Singapore by 2030?",
-  //   "30000",
-  //   "40000",
-  //   "50000",
-  //   "60000",
-  //   4
-  // ),
-  // new Question(
-  //   "What are NOT some efforts put in to encourage the transition to EVs?",
-  //   "Reduced ERP charges on Electric vehicles from 2030",
-  //   "Cleaner energy models for all new car and taxi registrations from 2030",
-  //   "No new diesel car and taxi registrations from 2025",
-  //   "EEAI (EV Early Adoption Incentive) subsidies",
-  //   1
-  // ),
-  // new Question(
-  //   "Who benefits from LTA's initiative, Green Man + ?",
-  //   "Regular pedestrians",
-  //   "Elderly",
-  //   "Emergency workers",
-  //   "Young children & Toddlers",
-  //   2
-  // ),
-  // new Question(
-  //   "What are some challenges in Transport planning?",
-  //   "Land scarcity",
-  //   "Topography issues",
-  //   "Traffic conditions",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "How big will Singapore's rail network be by 2030?",
-  //   "230km",
-  //   "310km",
-  //   "360km",
-  //   "420km",
-  //   3
-  // ),
-  // new Question(
-  //   "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
-  //   "30min city, 10 min towns",
-  //   "40min city, 15 min towns",
-  //   "35min city, 15 min towns",
-  //   "45min city, 20 min towns",
-  //   4
-  // ),
-  // new Question(
-  //   "What are the benefits of using LEDs?",
-  //   "No impact on the environment",
-  //   "Flexible designs",
-  //   "Low cost up-front",
-  //   "All of the above",
-  //   2
-  // ),
-  // new Question(
-  //   "LED lights are more power efficient than...",
-  //   "Fluorescent lamps",
-  //   "Incandescent bulbs",
-  //   "Halogen Light Bulbs",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "Conditions that affect solar panel efficiency",
-  //   "Humidity",
-  //   "Shade",
-  //   "Temperature",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "How many households does Singapore plan on powering (per year)by 2030?",
-  //   "300000",
-  //   "350000",
-  //   "400000",
-  //   "530000",
-  //   2
-  // ),
-  // new Question(
-  //   "Recycling reduces...",
-  //   "Water pollution",
-  //   "Energy Usage",
-  //   "Air pollution",
-  //   "All of the above",
-  //   4
-  // ),
-  // new Question(
-  //   "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
-  //   "70%",
-  //   "90%",
-  //   "100%",
-  //   "150%",
-  //   1
-  // ),
-  // new Question(
-  //   "Green roofs and walls DO NOT help...",
-  //   "Regulate building internal temperature",
-  //   "Decrease incidence of lightning strikes",
-  //   "One's mental health",
-  //   "Reduce carbon footprint",
-  //   2
-  // ),
+  new Question(
+    "What component is not in an AV?",
+    "Actuators",
+    "Combustion Engines",
+    "Sensors",
+    "Semiconductors",
+    2
+  ), //oic aEEHEHAAHEHAEHAHEHAEH why are you running why are you running r u okah SAMIR YOU ARE BREAKING THE CAR
+  new Question(
+    "What is not one of the advantages of AVs?",
+    "Decreased road accidents",
+    "Lesser time spent travelling",
+    "Lower cost to manufacture",
+    "Reduced air pollution",
+    3
+  ),
+  new Question(
+    "How many charging points will be available in Singapore by 2030?",
+    "30000",
+    "40000",
+    "50000",
+    "60000",
+    4
+  ),
+  new Question(
+    "What are NOT some efforts put in to encourage the transition to EVs?",
+    "Reduced ERP charges on Electric vehicles from 2030",
+    "Cleaner energy models for all new car and taxi registrations from 2030",
+    "No new diesel car and taxi registrations from 2025",
+    "EEAI (EV Early Adoption Incentive) subsidies",
+    1
+  ),
+  new Question(
+    "Who benefits from LTA's initiative, Green Man + ?",
+    "Regular pedestrians",
+    "Elderly",
+    "Emergency workers",
+    "Young children & Toddlers",
+    2
+  ),
+  new Question(
+    "What are some challenges in Transport planning?",
+    "Land scarcity",
+    "Topography issues",
+    "Traffic conditions",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "How big will Singapore's rail network be by 2030?",
+    "230km",
+    "310km",
+    "360km",
+    "420km",
+    3
+  ),
+  new Question(
+    "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
+    "30min city, 10 min towns",
+    "40min city, 15 min towns",
+    "35min city, 15 min towns",
+    "45min city, 20 min towns",
+    4
+  ),
+  new Question(
+    "What are the benefits of using LEDs?",
+    "No impact on the environment",
+    "Flexible designs",
+    "Low cost up-front",
+    "All of the above",
+    2
+  ),
+  new Question(
+    "LED lights are more power efficient than...",
+    "Fluorescent lamps",
+    "Incandescent bulbs",
+    "Halogen Light Bulbs",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "Conditions that affect solar panel efficiency",
+    "Humidity",
+    "Shade",
+    "Temperature",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "How many households does Singapore plan on powering (per year)by 2030?",
+    "300000",
+    "350000",
+    "400000",
+    "530000",
+    2
+  ),
+  new Question(
+    "Recycling reduces...",
+    "Water pollution",
+    "Energy Usage",
+    "Air pollution",
+    "All of the above",
+    4
+  ),
+  new Question(
+    "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
+    "70%",
+    "90%",
+    "100%",
+    "150%",
+    1
+  ),
+  new Question(
+    "Green roofs and walls DO NOT help...",
+    "Regulate building internal temperature",
+    "Decrease incidence of lightning strikes",
+    "One's mental health",
+    "Reduce carbon footprint",
+    2
+  ),
 ];
 
 //level indicator
