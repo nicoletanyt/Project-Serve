@@ -144,7 +144,7 @@ if (officesLevel == 3) {
     document.createElement("img")
   );
   imageOverlay(
-    "//DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png",
+    "/DEVELOPMENT-PROJ-SERVE/DEV-OFFICES-2.png",
     document.createElement("img")
   );
 }
@@ -226,127 +226,126 @@ const arrayOfQuestions = [
     "EVs do not.",
     1
   ),
-  //   // new Question(
-  //   //   "What component is not in an AV?",
-  //   //   "Actuators",
-  //   //   "Combustion Engines",
-  //   //   "Sensors",
-  //   //   "Semiconductors",
-  //   //   2
-  //   // ), //oic aEEHEHAAHEHAEHAHEHAEH why are you running why are you running r u okah SAMIR YOU ARE BREAKING THE CAR
-  //   // new Question(
-  //   //   "What is not one of the advantages of AVs?",
-  //   //   "Decreased road accidents",
-  //   //   "Lesser time spent travelling",
-  //   //   "Lower cost to manufacture",
-  //   //   "Reduced air pollution",
-  //   //   3
-  //   // ),
-  //   // new Question(
-  //   //   "How many charging points will be available in Singapore by 2030?",
-  //   //   "30000",
-  //   //   "40000",
-  //   //   "50000",
-  //   //   "60000",
-  //   //   4
-  //   // ),
-  //   // new Question(
-  //   //   "What are NOT some efforts put in to encourage the transition to EVs?",
-  //   //   "Reduced ERP charges on Electric vehicles from 2030",
-  //   //   "Cleaner energy models for all new car and taxi registrations from 2030",
-  //   //   "No new diesel car and taxi registrations from 2025",
-  //   //   "EEAI (EV Early Adoption Incentive) subsidies",
-  //   //   1
-  //   // ),
-  //   // new Question(
-  //   //   "Who benefits from LTA's initiative, Green Man + ?",
-  //   //   "Regular pedestrians",
-  //   //   "Elderly",
-  //   //   "Emergency workers",
-  //   //   "Young children & Toddlers",
-  //   //   2
-  //   // ),
-  //   // new Question(
-  //   //   "What are some challenges in Transport planning?",
-  //   //   "Land scarcity",
-  //   //   "Topography issues",
-  //   //   "Traffic conditions",
-  //   //   "All of the above",
-  //   //   4
-  //   // ),
-  //   // new Question(
-  //   //   "How big will Singapore's rail network be by 2030?",
-  //   //   "230km",
-  //   //   "310km",
-  //   //   "360km",
-  //   //   "420km",
-  //   //   3
-  //   // ),
-  //   // new Question(
-  //   //   "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
-  //   //   "30min city, 10 min towns",
-  //   //   "40min city, 15 min towns",
-  //   //   "35min city, 15 min towns",
-  //   //   "45min city, 20 min towns",
-  //   //   4
-  //   // ),
-  //   // new Question(
-  //   //   "What are the benefits of using LEDs?",
-  //   //   "No impact on the environment",
-  //   //   "Flexible designs",
-  //   //   "Low cost up-front",
-  //   //   "All of the above",
-  //   //   2
-  //   // ),
-  //   // new Question(
-  //   //   "LED lights are more power efficient than...",
-  //   //   "Fluorescent lamps",
-  //   //   "Incandescent bulbs",
-  //   //   "Halogen Light Bulbs",
-  //   //   "All of the above",
-  //   //   4
-  //   // ),
-  //   // new Question(
-  //   //   "Conditions that affect solar panel efficiency",
-  //   //   "Humidity",
-  //   //   "Shade",
-  //   //   "Temperature",
-  //   //   "All of the above",
-  //   //   4
-  //   // ),
-  //   // new Question(
-  //   //   "How many households does Singapore plan on powering (per year)by 2030?",
-  //   //   "300000",
-  //   //   "350000",
-  //   //   "400000",
-  //   //   "530000",
-  //   //   2
-  //   // ),
-  //   // new Question(
-  //   //   "Recycling reduces...",
-  //   //   "Water pollution",
-  //   //   "Energy Usage",
-  //   //   "Air pollution",
-  //   //   "All of the above",
-  //   //   4
-  //   // ),
-  //   // new Question(
-  //   //   "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
-  //   //   "70%",
-  //   //   "90%",
-  //   //   "100%",
-  //   //   "150%",
-  //   //   1
-  //   // ),
-  //   // new Question(
-  //   //   "Green roofs and walls DO NOT help...",
-  //   //   "Regulate building internal temperature",
-  //   //   "Decrease incidence of lightning strikes",
-  //   //   "One's mental health",
-  //   //   "Reduce carbon footprint",
-  //   //   2
-  //   // ),
-  //   //doing one question then so we need too add more elements we can add without having to add to the other ones and stuff
+  // new Question(
+  //   "What component is not in an AV?",
+  //   "Actuators",
+  //   "Combustion Engines",
+  //   "Sensors",
+  //   "Semiconductors",
+  //   2
+  // ), //oic aEEHEHAAHEHAEHAHEHAEH why are you running why are you running r u okah SAMIR YOU ARE BREAKING THE CAR
+  // new Question(
+  //   "What is not one of the advantages of AVs?",
+  //   "Decreased road accidents",
+  //   "Lesser time spent travelling",
+  //   "Lower cost to manufacture",
+  //   "Reduced air pollution",
+  //   3
+  // ),
+  // new Question(
+  //   "How many charging points will be available in Singapore by 2030?",
+  //   "30000",
+  //   "40000",
+  //   "50000",
+  //   "60000",
+  //   4
+  // ),
+  // new Question(
+  //   "What are NOT some efforts put in to encourage the transition to EVs?",
+  //   "Reduced ERP charges on Electric vehicles from 2030",
+  //   "Cleaner energy models for all new car and taxi registrations from 2030",
+  //   "No new diesel car and taxi registrations from 2025",
+  //   "EEAI (EV Early Adoption Incentive) subsidies",
+  //   1
+  // ),
+  // new Question(
+  //   "Who benefits from LTA's initiative, Green Man + ?",
+  //   "Regular pedestrians",
+  //   "Elderly",
+  //   "Emergency workers",
+  //   "Young children & Toddlers",
+  //   2
+  // ),
+  // new Question(
+  //   "What are some challenges in Transport planning?",
+  //   "Land scarcity",
+  //   "Topography issues",
+  //   "Traffic conditions",
+  //   "All of the above",
+  //   4
+  // ),
+  // new Question(
+  //   "How big will Singapore's rail network be by 2030?",
+  //   "230km",
+  //   "310km",
+  //   "360km",
+  //   "420km",
+  //   3
+  // ),
+  // new Question(
+  //   "What is Singapore's goal for transportation efficiency according to the LTA Master Plan 2040?",
+  //   "30min city, 10 min towns",
+  //   "40min city, 15 min towns",
+  //   "35min city, 15 min towns",
+  //   "45min city, 20 min towns",
+  //   4
+  // ),
+  // new Question(
+  //   "What are the benefits of using LEDs?",
+  //   "No impact on the environment",
+  //   "Flexible designs",
+  //   "Low cost up-front",
+  //   "All of the above",
+  //   2
+  // ),
+  // new Question(
+  //   "LED lights are more power efficient than...",
+  //   "Fluorescent lamps",
+  //   "Incandescent bulbs",
+  //   "Halogen Light Bulbs",
+  //   "All of the above",
+  //   4
+  // ),
+  // new Question(
+  //   "Conditions that affect solar panel efficiency",
+  //   "Humidity",
+  //   "Shade",
+  //   "Temperature",
+  //   "All of the above",
+  //   4
+  // ),
+  // new Question(
+  //   "How many households does Singapore plan on powering (per year)by 2030?",
+  //   "300000",
+  //   "350000",
+  //   "400000",
+  //   "530000",
+  //   2
+  // ),
+  // new Question(
+  //   "Recycling reduces...",
+  //   "Water pollution",
+  //   "Energy Usage",
+  //   "Air pollution",
+  //   "All of the above",
+  //   4
+  // ),
+  // new Question(
+  //   "According to Singapore's Zero Waste Masterplan, how much of an increase in overall recycling rate will there be by 2030?",
+  //   "70%",
+  //   "90%",
+  //   "100%",
+  //   "150%",
+  //   1
+  // ),
+  // new Question(
+  //   "Green roofs and walls DO NOT help...",
+  //   "Regulate building internal temperature",
+  //   "Decrease incidence of lightning strikes",
+  //   "One's mental health",
+  //   "Reduce carbon footprint",
+  //   2
+  // ),
 ];
 
 //level indicator
@@ -547,6 +546,14 @@ function sendInput() {
             break;
           case 3:
             imageOverlay1.src = "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-2.png";
+
+            sayText(
+              "CAS: Solar panels are a rather helpful invention if you think about it. They’re genius, converting light energy from their Sun into electrical energy. You seem…upset by this Development. I thought you would’ve loved to see humans taking advantage of their natural phenomena to create a renewable source of energy."
+            );
+            sayText(
+              "POL: Hm, just thinking. Why do they place it everywhere? I mean, what exactly do they hope to gain by putting such eyesores all over the place. There’s no point for them, anyways, not when there’s no Sun in here."
+            );
+
             break;
           case 4:
             imageOverlay1.src = "/DEVELOPMENT-PROJ-SERVE/DEV-FACTORY-2.png";
@@ -641,7 +648,10 @@ function sendInput() {
             imageOverlay4.src = "/DEVELOPMENT-PROJ-SERVE/DEV-COAST-2.png";
 
             sayText(
-              "POL: Desalination. It’s a fairly similar concept to filtering. You can see that it’s placed right at the Coast in the Simulation. Humans are finally utilising this huge body of water, that’s right in front of them. Still, their main goal is to remove any impurities from the seawater, turning the seawater into fresh drinking water. Can’t they just drink their water  straight from the source?"
+              "POL: Desalination. It’s a fairly similar concept to filtering. You can see that it’s placed right at the Coast in the Simulation. Humans are finally utilising this huge body of water, that’s right in front of them. Still, their main goal is to remove any impurities from the seawater, turning the seawater into fresh drinking water. Can’t they just drink their water straight from the source?"
+            );
+            sayText(
+              "CAS: The Lore claims that the humans cannot survive such high amounts of salt. You already knew that, POL; I remember your experiements before the Simulation. Stop playing the fool when you are fully aware of the resourcesfulness and grit of the humans, much more than I am. The water undegoes reverse osmosis thanks to semipermeable membranes. Impurities like salt and dirt have large particles, so they are left behind as the water passes throigh these membranes."
             );
 
             break;
@@ -740,6 +750,25 @@ function sendInput() {
           case 3:
             imageOverlay6.src = "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-2.png";
 
+            sayText(
+              "CAS: It’s solar panels. POL, how is your Code right now? You seem better. Stable…The Glitches, are they…?"
+            );
+            sayText(
+              "POL: Glitches? What are you talking about? Oh, stop worrying, CAS, I won’t just disappear so suddenly. Besides, our dear User needs us, isn’t that right? I’ll explain this one! Solar panels are a rather helpful invention if you think about it. They’re genius, converting light energy from their Sun into electrical energy. Did I say some part of the Dialogue wrong? Let me see, you know I don’t read that thing!"
+            );
+
+            sayText(
+              "CAS: …I see. It just sounded familiar, what you said is all. Perhaps, I’ve been reading the Lore too often. It makes me feel like we’ve been here before…or that we will eventually. Whatever the case is, I’ll just wait for it."
+            );
+            sayText(
+              "POL: …Seriously, you’re way too cryptid. User, you agree with me, right? CAS is sooo dramatic!"
+            );
+
+            sayText(
+              "CAS: Hey! I’m not the one who Glitched away an entire bakery because their wedding bouquet had one less dahlia than planned. Get back here!"
+            );
+
+            sayText("POL: You’ll never take me alive! ");
             break;
           case 4:
             imageOverlay6.src = "/DEVELOPMENT-PROJ-SERVE/DEV-GAS STATION-2.png";
