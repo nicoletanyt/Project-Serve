@@ -152,9 +152,7 @@ body {
   display: flex;
   flex-direction: column;
   float: right;
-  /* height: 80vh;
-  width: 37.05902777777778vw; */
-  width: 48.7vw;
+  width: 37.05902777777778vw;
   height: inherit;
 }
 .mainCont h2 {
@@ -165,7 +163,7 @@ body {
   opacity: 1;
   animation: fadeAnimation 1s ease-in-out 0s forwards;
   height: 10vh;
-  width: auto;
+  width: inherit;
   font-size: 1vw;
   color: aquamarine;
 }
@@ -206,7 +204,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: inherit;
 }
 .fa-paper-plane {
   color: green;
