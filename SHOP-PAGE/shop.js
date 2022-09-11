@@ -45,7 +45,7 @@ function addToCart(btn) {
         //if the user has enough greenpoints to purchase the item
         greenpoints = greenpoints - costOfItems[i][1];
         alert("Item purchased successfully.");
-        GPointLabel.textContent = "Green Points:  " + String(greenpoints); //update greenpoint label
+        GPointLabel.textContent = "Leaf Stickers:  " + String(greenpoints); //update greenpoint label
         switch (btn) {
           case buyButtonBlimp:
             blimpBought = "true";
