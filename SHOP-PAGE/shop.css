@@ -38,7 +38,7 @@ body {
   flex-direction: row;
   background-color: #f3e3ca;
   /* padding-bottom: 22.701475595913735vh; */
-  /* height: 65.81296758104739vh; */
+  height: 65.81296758104739vh;
   width: auto;
 }
 
@@ -53,7 +53,6 @@ body {
   font-family: arial;
   border-radius: 12px;
   /* height: 75vh; */
-  height: 100%;
   width: 48%;
   /* max-width: 102.56.25vw;
   min-height: 45.40295119182747vh; */
@@ -103,9 +102,9 @@ body {
 
 .Name {
   color: rgb(0, 0, 0);
-  font-size: 50px;
   align-items: center;
   position: sticky;
+  font-size: x-large;
 }
 
 .Price {
@@ -147,5 +146,5 @@ body {
 
 img {
   /* width: 70%; */
-  height: auto;
+  height: inherit;
 }
