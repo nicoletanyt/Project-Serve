@@ -11,6 +11,7 @@ body {
   font-family: "Poppins", sans-serif;
   text-align: center;
   background: #f3e3ca;
+  height: 100%;
 }
 
 .TopBorder {
@@ -18,23 +19,27 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px;
-  height: auto;
+  padding: 1.1350737797956867vh;
+  height: 10%;
 }
 
 .Title {
   font-size: 40px;
-  margin-right: 200px;
-  margin-left: 20px;
+  /* margin-right: 22.701475595913735vh;
+  margin-left: 2.2701475595913734vh; */
   opacity: 0.42;
   position: absolute;
+  margin-left: 6%;
+  margin-right: 10%;
 }
 
 .Container {
   display: flex;
   flex-direction: row;
   background-color: #f3e3ca;
-  padding-bottom: 200px;
+  /* padding-bottom: 22.701475595913735vh; */
+  height: 65.81296758104739vh;
+  width: auto;
 }
 
 .Productcont {
@@ -43,12 +48,14 @@ body {
   background-color: #476a5d;
   flex-direction: column;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 5.675368898978434vh;
   text-align: center;
   font-family: arial;
   border-radius: 12px;
-  max-width: 900px;
-  min-height: 400px;
+  /* height: 75vh; */
+  width: 48%;
+  /* max-width: 102.56.25vw;
+  min-height: 45.40295119182747vh; */
 }
 
 .Info {
@@ -56,12 +63,13 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 3px solid white;
+  /* border: 3px solid white; */
   color: black;
-  padding-left: 40px;
+  /* padding-left: 40px;
   padding-right: 10px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 20px; */
+  /* padding: 5%; */
 }
 
 .Buybtn:hover {
@@ -75,11 +83,13 @@ body {
 
 .Buybtn {
   background-color: rgb(26, 190, 78);
-  margin-left: 400px;
+  /* margin-left: 400px;
   padding-right: 40px;
   padding-left: 40px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 20px; */
+  margin: 3%;
+  padding: 3%;
   border-radius: 12px;
   font-size: 20px;
 }
@@ -107,7 +117,7 @@ body {
   padding-top: 0px;
   padding-bottom: 0;
   background-color: rgb(219, 206, 184);
-  min-height: 300px;
+  height: 50vh;
 }
 
 .fa-solid {
@@ -116,6 +126,7 @@ body {
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
+  margin-left: 2%;
 }
 
 .totalCost {
@@ -125,9 +136,15 @@ body {
 .GPoint,
 .Username {
   font-size: 30px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
+  margin-left: 10%;
 }
 
 .GPoint {
-  margin-left: 280px;
+  margin-left: 10%;
+}
+
+img {
+  /* width: 70%; */
+  height: auto;
 }

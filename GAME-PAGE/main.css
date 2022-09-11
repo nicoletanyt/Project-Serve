@@ -8,7 +8,8 @@ body {
   border-radius: 3.6540803897685747vh;
   /* background-image: url("/main-background.jpeg"); */
   /* background-size: 460px, 360px, auto; */
-  background-repeat: no-repeat;
+  background-color: #f3e3ca;
+  height: 100%;
 }
 
 .top-menu-bar {
@@ -96,12 +97,14 @@ body {
 
 .main-menu {
   flex: 2;
-  height: 650px;
+  /* height: 650px; */
+  /* height: 75%; */
   padding-top: 10px;
   border-radius: inherit;
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  position: relative;
 }
 
 .city-layout {
@@ -149,13 +152,15 @@ body {
   display: flex;
   flex-direction: column;
   float: right;
-  height: 80vh;
-  width: 37.05902777777778vw;
+  /* height: 80vh;
+  width: 37.05902777777778vw; */
+  width: 48.7vw;
+  height: inherit;
 }
 .mainCont h2 {
   display: inline-block;
   text-align: center;
-  margin: 2px;
+  /* margin: 2px; */
   /* margin-bottom: 0; */
   opacity: 1;
   animation: fadeAnimation 1s ease-in-out 0s forwards;
@@ -165,8 +170,8 @@ body {
   color: aquamarine;
 }
 .terminalCont {
+  margin: 0;
   height: 100%;
-  width: inherit;
   padding: 3vh;
   font-family: "Roboto" monospace;
   opacity: 0;
@@ -189,8 +194,9 @@ body {
   background: inherit;
   display: block;
   border-color: rgb(194, 194, 194);
-  width: 100%;
+  /* width: 100%; */
   color: green;
+  width: calc(100% - 2rem);
   font-size: 20px;
   /* padding: 20px; */
   outline: none;
@@ -200,10 +206,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 .fa-paper-plane {
   color: green;
-  font-size: 20px;
+  font-size: 2rem;
   background-color: transparent;
   cursor: pointer;
 }
@@ -211,13 +218,13 @@ body {
   overflow-y: auto;
   /* height: 10%; */
 }
-.pass {
+/* .pass {
   margin: -5px 0 20px 5px;
   cursor: pointer;
 }
 .pass:hover {
   text-decoration: underline;
-}
+} */
 
 #city-image {
   width: auto;
